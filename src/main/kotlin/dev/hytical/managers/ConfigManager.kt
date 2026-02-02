@@ -1,6 +1,7 @@
 package dev.arclyx.managers
 
 import dev.arclyx.HyticInv
+import dev.arclyx.storages.StorageType
 import org.bukkit.configuration.file.FileConfiguration
 
 @Suppress("unused")
@@ -42,7 +43,12 @@ class ConfigManager(
         }
     }
 
-    fun getStorageMethod(): String = config.getString("storage.method", "sqlite")?.lowercase() ?: "sqlite"
+    fun getStorageMethod(): StorageType = StorageType.fromString(
+        config.getString(
+            "storage.method",
+            "sqlite"
+        )
+    )
 
     fun getMySQLHost(): String = config.getString("storage.mysql.host", "localhost") ?: "localhost"
     fun getMySQLPort(): Int = config.getInt("storage.mysql.port", 3306)
