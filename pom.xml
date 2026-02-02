@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.arclyx</groupId>
-  <artifactId>hyticinv</artifactId>
+  <artifactId>HyticInv</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 
-  <name>hyticinv</name>
+  <name>HyticInv</name>
 
   <properties>
     <java.version>21</java.version>

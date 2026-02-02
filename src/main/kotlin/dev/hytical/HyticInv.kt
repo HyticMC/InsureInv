@@ -2,6 +2,7 @@ package dev.hytical
 
 import dev.hytical.command.HyticInvCommand
 import dev.hytical.command.HyticInvTabCompleter
+import dev.hytical.listeners.PlayerDeath
 import dev.hytical.managers.ConfigManager
 import dev.hytical.managers.EconomyManager
 import dev.hytical.messaging.MessageManager
@@ -43,12 +44,29 @@ class HyticInv : JavaPlugin() {
     override fun onDisable() {}
 
     private fun registerCommand() {
-        val commandHandler = HyticInvCommand(this, configManager, storageManager, economyManager, messageManager)
+        val commandHandler = HyticInvCommand(
+            this,
+            configManager,
+            storageManager,
+            economyManager,
+            messageManager
+        )
         val tabCompleterHandler = HyticInvTabCompleter()
 
         getCommand("hyticinv")?.apply {
             setExecutor(commandHandler)
             tabCompleter = tabCompleterHandler
         }
+    }
+
+    private fun registerEvent() {
+        val playerDeath = PlayerDeath(
+            this,
+            configManager,
+            storageManager,
+            messageManager
+        )
+
+        server.pluginManager.registerEvents(playerDeath, this)
     }
 }

@@ -4,3 +4,25 @@ main: dev.hytical.HyticInv
 api-version: '1.21'
 authors: [HyticMC, Hytical]
 website: https://guns.lol/Hytical
+
+softdepend:
+  - Vault
+  - PlaceholderAPI
+
+commands:
+  hyticinv:
+    description: Main ElyInv command
+    usage: /<command> <buy|toggle|info|set|setprice|setmax|reload|help> [args]
+    aliases:
+      - inv
+      - hinv
+
+permissions:
+  hyticinv.use:
+    description: Allows using basic HyticInv commands
+    default: true
+  hyticinv.admin:
+    description: Allows using administrative HyticInv commands
+    default: op
+    children:
+      hyticinv.use: true
