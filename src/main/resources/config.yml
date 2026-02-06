@@ -27,68 +27,68 @@ economy:
   max-charges-per-player: 10
 
 messages:
-  prefix: '<gradient:#00d4ff:#0099ff><bold>[ hyticinv ]</bold></gradient> <dark_gray>»</dark_gray> '
+  prefix: '<gradient:#00d4ff:#0099ff><bold>[ʜʏᴛɪᴄɪɴᴠ]</bold></gradient> <dark_gray>»</dark_gray> <white>'
   
   # Purchase
-  buy-success: '<green>Successfully purchased <white>{amount}</white> charge(s) for <white>${price}</white>! You now have <white>{charges}</white>/{max} charges.</green>'
-  buy-insufficient-funds: '<red>Insufficient funds! You need <white>${price}</white> but only have <white>${balance}</white>.</red>'
-  buy-max-exceeded: '<red>Purchase would exceed maximum charges! You can only buy <white>{amount}</white> more charge(s).</red>'
-  buy-invalid-amount: '<red>Invalid amount! Please specify a positive number.</red>'
+  buy-success: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴍᴜᴀ <color:#99ff94>{amount}</color> ʟầɴ sử ᴅụɴɢ ᴠớɪ <color:#99ff94>${price}</color>! ʙạɴ ᴄòɴ <color:#99ff94>{charges}</color>/{max} ʟầɴ.
+  buy-insufficient-funds: '<gradient:#ff7817:#ffc46b>số ᴅư ᴋʜôɴɢ đủ! ʙạɴ ᴄầɴ <color:#ffc885>${price}</color> ɴʜưɴɢ ᴄʜỉ ᴄó <color:#ffc885>${balance}</color>.</gradient>'
+  buy-max-exceeded: '<gradient:#ff7817:#ffc46b>ᴍᴜᴀ sẽ ᴠượᴛ qᴜá số ʟượɴɢ ᴛốɪ đᴀ! ʙạɴ ᴄʜỉ ᴄó ᴛʜể ᴍᴜᴀ ᴛʜêᴍ <color:#ffc885>{amount}</color> ʟầɴ ɴữᴀ.</gradient>'
+  buy-invalid-amount: '<gradient:#ff7817:#ffc46b>số ʟượɴɢ ᴋʜôɴɢ ʜợᴘ ʟệ! ᴠᴜɪ ʟòɴɢ ᴄʜỉ địɴʜ ᴍộᴛ số ᴅươɴɢ.</gradient>'
   
   # Toggle
-  toggle-on: '<green>Inventory protection <white>enabled</white>! You have <white>{charges}</white> charge(s) remaining.</green>'
-  toggle-off: '<yellow>Inventory protection <white>disabled</white>! Your inventory will not be protected on death.</yellow>'
+  toggle-on: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#99ff94>ʙậᴛ</color>! ʙạɴ ᴄòɴ <color:#99ff94>{charges}</color> ʟầɴ sử ᴅụɴɢ.
+  toggle-off: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#ff7817>ᴛắᴛ</color>! ᴛúɪ đồ ᴄủᴀ ʙạɴ sẽ ᴋʜôɴɢ đượᴄ ʙảᴏ ᴠệ ᴋʜɪ ᴄʜếᴛ.
   
   # Protection
-  protection-triggered: '<gradient:#00ff00:#00aa00>Your inventory was protected! <white>{charges}</white> charge(s) remaining.</gradient>'
-  no-charges: '<red>You died without any charges! Your inventory was not protected.</red>'
-  protection-disabled: '<yellow>Protection is disabled. Use <white>/hyticinv toggle</white> to enable it.</yellow>'
+  protection-triggered: '<gradient:#00ff00:#00aa00>ᴛúɪ đồ ᴄủᴀ ʙạɴ đã đượᴄ ʙảᴏ ᴠệ! ᴄòɴ <color:#99ff94>{charges}</color> ʟầɴ sử ᴅụɴɢ.</gradient>'
+  no-charges: '<gradient:#ff7817:#ffc46b>ʙạɴ đã ᴄʜếᴛ ᴍà ᴋʜôɴɢ ᴄó ʟầɴ ʙảᴏ ᴠệ ɴàᴏ! ᴛúɪ đồ ᴄủᴀ ʙạɴ ᴋʜôɴɢ đượᴄ ʙảᴏ ᴠệ.</gradient>'
+  protection-disabled: '<gradient:#ff7817:#ffc46b>ʙảᴏ ᴠệ đᴀɴɢ ᴛắᴛ. sử ᴅụɴɢ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ᴛᴏɢɢʟᴇ</color> để ʙậᴛ.</gradient>'
   
   # Info
-  info-header: '<gradient:#00d4ff:#0099ff>═══════════ Player Info ═══════════</gradient>'
-  info-player: '<gray>Player:</gray> <white>{player}</white>'
-  info-charges: '<gray>Charges:</gray> <white>{charges}</white>/<white>{max}</white>'
-  info-status: '<gray>Protection:</gray> {status}'
-  info-total-purchases: '<gray>Total Purchased:</gray> <white>{total_charges}</white>'
-  info-usage-count: '<gray>Times Protected:</gray> <white>{usage_count}</white>'
+  info-header: '<gradient:#00d4ff:#0099ff>═══════════ ᴛʜôɴɢ ᴛɪɴ ɴɢườɪ ᴄʜơɪ ═══════════</gradient>'
+  info-player: '<dark_gray>▪ <white>ɴɢườɪ ᴄʜơɪ: <color:#9ce8ff>{player}</color>'
+  info-charges: '<dark_gray>▪ <white>số ʟầɴ: <color:#9ce8ff>{charges}</color>/<color:#9ce8ff>{max}</color>'
+  info-status: '<dark_gray>▪ <white>ᴛʀạɴɢ ᴛʜáɪ: {status}'
+  info-total-purchases: '<dark_gray>▪ <white>ᴛổɴɢ đã ᴍᴜᴀ: <color:#9ce8ff>{total_charges}</color>'
+  info-usage-count: '<dark_gray>▪ <white>số ʟầɴ đượᴄ ʙảᴏ ᴠệ: <color:#9ce8ff>{usage_count}</color>'
   info-footer: '<gradient:#00d4ff:#0099ff>═══════════════════════════════════</gradient>'
   
   # Admin
-  admin-set-success: '<green>Set <white>{player}</white>''s charges to <white>{amount}</white>.</green>'
-  admin-toggle-success: '<green>Toggled protection <white>{status}</white> for <white>{player}</white>.</green>'
-  price-updated: '<green>Price per charge updated to <white>${price}</white>.</green>'
-  max-updated: '<green>Maximum charges per player updated to <white>{max}</white>.</green>'
+  admin-set-success: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đặᴛ số ʟầɴ ᴄủᴀ <color:#9ce8ff>{player}</color> ᴛʜàɴʜ <color:#9ce8ff>{amount}</color>.
+  admin-toggle-success: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đổɪ ᴛʀạɴɢ ᴛʜáɪ ʙảᴏ ᴠệ ᴛʜàɴʜ <color:#9ce8ff>{status}</color> ᴄʜᴏ <color:#9ce8ff>{player}</color>.
+  price-updated: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ɢɪá ᴍỗɪ ʟầɴ ᴄậᴘ ɴʜậᴘ ᴛʜàɴʜ <color:#9ce8ff>${price}</color>.
+  max-updated: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>số ʟầɴ ᴛốɪ đᴀ ᴍỗɪ ɴɢườɪ ᴄʜơɪ ᴄậᴘ ɴʜậᴘ ᴛʜàɴʜ <color:#9ce8ff>{max}</color>.
   
   # System
-  reload-complete: '<green>Configuration reloaded successfully!</green>'
-  reload-storage-changed: '<yellow>Storage method changed to <white>{method}</white>. Data migrated successfully.</yellow>'
+  reload-complete: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ!
+  reload-storage-changed: '<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ᴘʜươɴɢ ᴛʜứᴄ ʟưᴜ ᴛʀữ đổɪ ᴛʜàɴʜ <color:#9ce8ff>{method}</color>. ᴅữ ʟɪệᴜ đã đượᴄ ᴅɪ ᴄʜᴜʏểɴ.
   
   # Errors
-  no-permission: '<red>You don''t have permission to use this command!</red>'
-  player-not-found: '<red>Player <white>{player}</white> not found or has never joined.</red>'
-  invalid-amount: '<red>Invalid amount! Please specify a valid positive number.</red>'
-  error-player-only: '<red>This command can only be used by players!</red>'
-  error-economy-unavailable: '<red>Economy system is not available!</red>'
-  error-transaction-failed: '<red>Transaction failed! Please try again.</red>'
+  no-permission: '<gradient:#ff7817:#ffc46b>ʙạɴ ᴋʜôɴɢ ᴄó qᴜʏềɴ sử ᴅụɴɢ ʟệɴʜ ɴàʏ!</gradient>'
+  player-not-found: '<gradient:#ff7817:#ffc46b>ᴋʜôɴɢ ᴛìᴍ ᴛʜấʏ ɴɢườɪ ᴄʜơɪ <color:#ffc885>{player}</color> ʜᴏặᴄ ᴄʜưᴀ ᴛừɴɢ ᴛʜᴀᴍ ɢɪᴀ.</gradient>'
+  invalid-amount: '<gradient:#ff7817:#ffc46b>số ʟượɴɢ ᴋʜôɴɢ ʜợᴘ ʟệ! ᴠᴜɪ ʟòɴɢ ᴄʜỉ địɴʜ ᴍộᴛ số ʜợᴘ ʟệ.</gradient>'
+  error-player-only: '<gradient:#ff7817:#ffc46b>ʟệɴʜ ɴàʏ ᴄʜỉ ᴄó ᴛʜể ᴅùɴɢ ʙởɪ ɴɢườɪ ᴄʜơɪ!</gradient>'
+  error-economy-unavailable: '<gradient:#ff7817:#ffc46b>ʜệ ᴛʜốɴɢ ᴋɪɴʜ ᴛế ᴋʜôɴɢ ᴋʜả ᴅụɴɢ!</gradient>'
+  error-transaction-failed: '<gradient:#ff7817:#ffc46b>ɢɪᴀᴏ ᴅịᴄʜ ᴛʜấᴛ ʙạɪ! ᴠᴜɪ ʟòɴɢ ᴛʜử ʟạɪ.</gradient>'
   
   # Usage
-  usage-buy: '<red>Usage: /hyticinv buy <amount></red>'
-  usage-set: '<red>Usage: /hyticinv set <player> <amount></red>'
-  usage-setprice: '<red>Usage: /hyticinv setprice <amount></red>'
-  usage-setmax: '<red>Usage: /hyticinv setmax <amount></red>'
+  usage-buy: '<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʙᴜʏ <số ʟượɴɢ></color></gradient>'
+  usage-set: '<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color></gradient>'
+  usage-setprice: '<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color></gradient>'
+  usage-setmax: '<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color></gradient>'
   
   # Help
-  help-header: '<gradient:#00d4ff:#0099ff>═══════════ HyticInv Help ({page}/{total}) ═══════════</gradient>'
-  help-buy: '<aqua>/hyticinv buy <amount></aqua> <gray>-</gray> <white>Purchase inventory protection charges</white>'
-  help-toggle: '<aqua>/hyticinv toggle [player]</aqua> <gray>-</gray> <white>Toggle inventory protection on/off</white>'
-  help-info: '<aqua>/hyticinv info [player]</aqua> <gray>-</gray> <white>View charge count and protection status</white>'
-  help-set: '<aqua>/hyticinv set <player> <amount></aqua> <gray>-</gray> <white>Set player''s charge count (Admin)</white>'
-  help-setprice: '<aqua>/hyticinv setprice <amount></aqua> <gray>-</gray> <white>Update price per charge (Admin)</white>'
-  help-setmax: '<aqua>/hyticinv setmax <amount></aqua> <gray>-</gray> <white>Update max charges per player (Admin)</white>'
-  help-reload: '<aqua>/hyticinv reload</aqua> <gray>-</gray> <white>Reload configuration (Admin)</white>'
-  help-help: '<aqua>/hyticinv help [page]</aqua> <gray>-</gray> <white>Show this help message</white>'
+  help-header: '<gradient:#00d4ff:#0099ff>═══════════ ᴛʀợ ɢɪúᴘ ʜʏᴛɪᴄɪɴᴠ ({page}/{total}) ═══════════</gradient>'
+  help-buy: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʙᴜʏ <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴍᴜᴀ ʟầɴ ʙảᴏ ᴠệ ᴛúɪ đồ</white>'
+  help-toggle: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ᴛᴏɢɢʟᴇ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>ʙậᴛ/ᴛắᴛ ʙảᴏ ᴠệ ᴛúɪ đồ</white>'
+  help-info: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ɪɴғᴏ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>xᴇᴍ số ʟầɴ ᴠà ᴛʀạɴɢ ᴛʜáɪ ʙảᴏ ᴠệ</white>'
+  help-set: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>Đặᴛ số ʟầɴ ᴄʜᴏ ɴɢườɪ ᴄʜơɪ (ᴀᴅᴍɪɴ)</white>'
+  help-setprice: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ ɢɪá ᴍỗɪ ʟầɴ (ᴀᴅᴍɪɴ)</white>'
+  help-setmax: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ số ʟầɴ ᴛốɪ đᴀ (ᴀᴅᴍɪɴ)</white>'
+  help-reload: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʀᴇʟᴏᴀᴅ</color> <dark_gray>-</dark_gray> <white>ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ (ᴀᴅᴍɪɴ)</white>'
+  help-help: '<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʜᴇʟᴘ [ᴛʀᴀɴɢ]</color> <dark_gray>-</dark_gray> <white>ʜɪểɴ ᴛʜị ᴛʜôɴɢ ᴛɪɴ ᴛʀợ ɢɪúᴘ</white>'
   help-footer: '<gradient:#00d4ff:#0099ff>═══════════════════════════════════════════════════</gradient>'
   
   # Status
-  status-enabled: '<green>Enabled</green>'
-  status-disabled: '<red>Disabled</red>'
+  status-enabled: '<color:#99ff94>ʙậᴛ</color>'
+  status-disabled: '<color:#ff7817>ᴛắᴛ</color>'
