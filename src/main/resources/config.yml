@@ -46,13 +46,13 @@ messages:
   protection-disabled: "<gradient:#ff7817:#ffc46b>ʙảᴏ ᴠệ đᴀɴɢ ᴛắᴛ. sử ᴅụɴɢ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ᴛᴏɢɢʟᴇ</color> để ʙậᴛ.</gradient>"
   
   # Info
-  info-header: "<gradient:#00d4ff:#0099ff>═══════════ ᴛʜôɴɢ ᴛɪɴ ɴɢườɪ ᴄʜơɪ ═══════════</gradient>"
+  info-header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━ ᴛʜôɴɢ ᴛɪɴ ɴɢườɪ ᴄʜơɪ ━━━━━━━━━━</gradient>"
   info-player: "<dark_gray>▪ <white>ɴɢườɪ ᴄʜơɪ: <color:#9ce8ff>{player}</color>"
   info-charges: "<dark_gray>▪ <white>số ʟầɴ: <color:#9ce8ff>{charges}</color>/<color:#9ce8ff>{max}</color>"
   info-status: "<dark_gray>▪ <white>ᴛʀạɴɢ ᴛʜáɪ: {status}"
   info-total-purchases: "<dark_gray>▪ <white>ᴛổɴɢ đã ᴍᴜᴀ: <color:#9ce8ff>{total_charges}</color>"
   info-usage-count: "<dark_gray>▪ <white>số ʟầɴ đượᴄ ʙảᴏ ᴠệ: <color:#9ce8ff>{usage_count}</color>"
-  info-footer: "<gradient:#00d4ff:#0099ff>═══════════════════════════════════</gradient>"
+  info-footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
   
   # Admin
   admin-set-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đặᴛ số ʟầɴ ᴄủᴀ <color:#9ce8ff>{player}</color> ᴛʜàɴʜ <color:#9ce8ff>{amount}</color>."
@@ -79,7 +79,7 @@ messages:
   usage-setmax: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color></gradient>"
   
   # Help
-  help-header: "<gradient:#00d4ff:#0099ff>═══════════ ᴛʀợ ɢɪúᴘ ʜʏᴛɪᴄɪɴᴠ ({page}/{total}) ═══════════</gradient>"
+  help-header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━ ᴛʀợ ɢɪúᴘ ʜʏᴛɪᴄɪɴᴠ ({page}/{total}) ━━━━━━━━━━</gradient>"
   help-buy: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʙᴜʏ <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴍᴜᴀ ʟầɴ ʙảᴏ ᴠệ ᴛúɪ đồ</white>"
   help-toggle: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ᴛᴏɢɢʟᴇ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>ʙậᴛ/ᴛắᴛ ʙảᴏ ᴠệ ᴛúɪ đồ</white>"
   help-info: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ɪɴғᴏ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>xᴇᴍ số ʟầɴ ᴠà ᴛʀạɴɢ ᴛʜáɪ ʙảᴏ ᴠệ</white>"
@@ -88,7 +88,7 @@ messages:
   help-setmax: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ số ʟầɴ ᴛốɪ đᴀ (ᴀᴅᴍɪɴ)</white>"
   help-reload: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʀᴇʟᴏᴀᴅ</color> <dark_gray>-</dark_gray> <white>ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ (ᴀᴅᴍɪɴ)</white>"
   help-help: "<dark_gray>▪ <color:#9ce8ff>/ʜʏᴛɪᴄɪɴᴠ ʜᴇʟᴘ [ᴛʀᴀɴɢ]</color> <dark_gray>-</dark_gray> <white>ʜɪểɴ ᴛʜị ᴛʜôɴɢ ᴛɪɴ ᴛʀợ ɢɪúᴘ</white>"
-  help-footer: "<gradient:#00d4ff:#0099ff>═══════════════════════════════════════════════════</gradient>"
+  help-footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
   
   # Status
   status-enabled: "<color:#99ff94>ʙậᴛ</color>"
