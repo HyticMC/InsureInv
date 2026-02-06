@@ -1,199 +1,84 @@
-# ====================================
-# HyticInv Configuration File
-# ====================================
+# HyticInv Configuration
 
-# =====================================
-# Storage Settings
-# =====================================
-# The plugin supports three storage backends with automatic fallback:
-# - mysql: Production-grade database with connection pooling (recommended for networks)
-# - sqlite: Lightweight file-based database (recommended for single servers)
-# - json: Simple file storage (final fallback option)
-#
-# If the selected method fails, the plugin will automatically try the next available option.
 storage:
-  # Storage method to use: mysql, sqlite, or json
   method: sqlite
   
-  # MySQL Database Configuration
-  # Requires MySQL 5.7+ or MariaDB 10.2+
   mysql:
-    # MySQL server hostname or IP address
     host: localhost
-    # MySQL server port (default: 3306)
     port: 3306
-    # Database name (will be created automatically if it doesn't exist)
     database: hyticinv
-    # MySQL username
     username: root
-    # MySQL password
     password: password
-    
-    # Connection Pool Settings
-    # These settings control how the plugin manages database connections
     pool:
-      # Maximum number of connections in the pool
-      # Higher values allow more concurrent database operations
-      # Recommended: 10 for small servers, 20+ for larger networks
       maximum-pool-size: 10
-      
-      # Minimum number of idle connections to maintain
-      # Keeping connections ready improves response time
       minimum-idle: 2
-      
-      # Maximum time (in milliseconds) to wait for a connection
-      # 30000ms = 30 seconds
       connection-timeout: 30000
-      
-      # Maximum time (in milliseconds) a connection can sit idle
-      # 600000ms = 10 minutes
       idle-timeout: 600000
-      
-      # Maximum lifetime (in milliseconds) of a connection in the pool
-      # 1800000ms = 30 minutes
       max-lifetime: 1800000
   
-  # SQLite Database Configuration
-  # File-based database stored in the plugin's data folder
   sqlite:
-    # Path to the SQLite database file (relative to plugin data folder)
-    # The file will be created automatically if it doesn't exist
     path: data.db
   
-  # JSON Storage Configuration
-  # Simple file-based storage (not recommended for production)
   json:
-    # Path to the JSON data file (relative to plugin data folder)
-    # The file will be created automatically if it doesn't exist
     path: data.json
 
-# =====================================
-# Economy Settings
-# =====================================
-# Requires Vault and a compatible economy plugin (e.g., EssentialsX)
 economy:
-  # Price per protection charge
-  # Players will pay this amount to buy one charge
   price-per-charge: 100.0
-  
-  # Maximum number of charges a player can have
-  # Prevents overstocking and maintains balance
   max-charges-per-player: 10
 
-# =====================================
-# Messages
-# =====================================
-# All messages support MiniMessage formatting:
-# - Colors: <red>, <green>, <blue>, <yellow>, <aqua>, <white>, etc.
-# - Gradients: <gradient:#FF0000:#00FF00>text</gradient>
-# - Bold/Italic: <bold>, <italic>, <underlined>
-# - Placeholders: {player}, {price}, {amount}, {charges}, etc.
-#
-# For more formatting options, visit: https://docs.advntr.dev/minimessage/format.html
 messages:
-  # Global prefix added to most messages
   prefix: '<gradient:#00d4ff:#0099ff><bold>[ hyticinv ]</bold></gradient> <dark_gray>»</dark_gray> '
   
-  # ===== Purchase Messages =====
-  # Shown when a player successfully purchases charges
-  # Placeholders: {amount}, {price}, {charges}, {max}
+  # Purchase
   buy-success: '<green>Successfully purchased <white>{amount}</white> charge(s) for <white>${price}</white>! You now have <white>{charges}</white>/{max} charges.</green>'
-  
-  # Shown when a player doesn't have enough money
-  # Placeholders: {price}, {balance}
   buy-insufficient-funds: '<red>Insufficient funds! You need <white>${price}</white> but only have <white>${balance}</white>.</red>'
-  
-  # Shown when purchasing would exceed the maximum charge limit
-  # Placeholders: {amount}
   buy-max-exceeded: '<red>Purchase would exceed maximum charges! You can only buy <white>{amount}</white> more charge(s).</red>'
-  
-  # Shown when an invalid amount is specified
   buy-invalid-amount: '<red>Invalid amount! Please specify a positive number.</red>'
   
-  # ===== Toggle Messages =====
-  # Shown when protection is enabled
-  # Placeholders: {charges}
+  # Toggle
   toggle-on: '<green>Inventory protection <white>enabled</white>! You have <white>{charges}</white> charge(s) remaining.</green>'
-  
-  # Shown when protection is disabled
   toggle-off: '<yellow>Inventory protection <white>disabled</white>! Your inventory will not be protected on death.</yellow>'
   
-  # ===== Protection Messages =====
-  # Shown when protection activates on death
-  # Placeholders: {charges}
+  # Protection
   protection-triggered: '<gradient:#00ff00:#00aa00>Your inventory was protected! <white>{charges}</white> charge(s) remaining.</gradient>'
-  
-  # Shown when a player dies without charges
   no-charges: '<red>You died without any charges! Your inventory was not protected.</red>'
-  
-  # Shown when protection is disabled and player dies
   protection-disabled: '<yellow>Protection is disabled. Use <white>/hyticinv toggle</white> to enable it.</yellow>'
   
-  # ===== Info Messages =====
-  # Header for the info display
+  # Info
   info-header: '<gradient:#00d4ff:#0099ff>═══════════ Player Info ═══════════</gradient>'
-  
-  # Player name display
-  # Placeholders: {player}
   info-player: '<gray>Player:</gray> <white>{player}</white>'
-  
-  # Charge count display
-  # Placeholders: {charges}, {max}
   info-charges: '<gray>Charges:</gray> <white>{charges}</white>/<white>{max}</white>'
-  
-  # Protection status display
-  # Placeholders: {status}
   info-status: '<gray>Protection:</gray> {status}'
-  
-  # Total charges purchased display
-  # Placeholders: {total_charges}
   info-total-purchases: '<gray>Total Purchased:</gray> <white>{total_charges}</white>'
-  
-  # Protection activation count display
-  # Placeholders: {usage_count}
   info-usage-count: '<gray>Times Protected:</gray> <white>{usage_count}</white>'
-  
-  # Footer for the info display
   info-footer: '<gradient:#00d4ff:#0099ff>═══════════════════════════════════</gradient>'
   
-  # ===== Admin Messages =====
-  # Shown when an admin sets a player's charges
-  # Placeholders: {player}, {amount}
+  # Admin
   admin-set-success: '<green>Set <white>{player}</white>''s charges to <white>{amount}</white>.</green>'
-  
-  # Shown when the price per charge is updated
-  # Placeholders: {price}
+  admin-toggle-success: '<green>Toggled protection <white>{status}</white> for <white>{player}</white>.</green>'
   price-updated: '<green>Price per charge updated to <white>${price}</white>.</green>'
-  
-  # Shown when the max charges limit is updated
-  # Placeholders: {max}
   max-updated: '<green>Maximum charges per player updated to <white>{max}</white>.</green>'
   
-  # ===== System Messages =====
-  # Shown when configuration is reloaded
+  # System
   reload-complete: '<green>Configuration reloaded successfully!</green>'
-  
-  # Shown when storage backend changes during reload
-  # Placeholders: {method}
   reload-storage-changed: '<yellow>Storage method changed to <white>{method}</white>. Data migrated successfully.</yellow>'
   
-  # ===== Error Messages =====
-  # Shown when a player lacks permission for a command
+  # Errors
   no-permission: '<red>You don''t have permission to use this command!</red>'
-  
-  # Shown when a specified player is not found
-  # Placeholders: {player}
   player-not-found: '<red>Player <white>{player}</white> not found or has never joined.</red>'
-  
-  # Shown when an invalid number is provided
   invalid-amount: '<red>Invalid amount! Please specify a valid positive number.</red>'
+  error-player-only: '<red>This command can only be used by players!</red>'
+  error-economy-unavailable: '<red>Economy system is not available!</red>'
+  error-transaction-failed: '<red>Transaction failed! Please try again.</red>'
   
-  # ===== Help Messages =====
-  # Header for help pages
-  # Placeholders: {page}, {total}
-  help-header: '<gradient:#00d4ff:#0099ff>═══════════ hyticinv Help (Page {page}/{total}) ═══════════</gradient>'
+  # Usage
+  usage-buy: '<red>Usage: /hyticinv buy <amount></red>'
+  usage-set: '<red>Usage: /hyticinv set <player> <amount></red>'
+  usage-setprice: '<red>Usage: /hyticinv setprice <amount></red>'
+  usage-setmax: '<red>Usage: /hyticinv setmax <amount></red>'
   
-  # Individual command descriptions
+  # Help
+  help-header: '<gradient:#00d4ff:#0099ff>═══════════ HyticInv Help ({page}/{total}) ═══════════</gradient>'
   help-buy: '<aqua>/hyticinv buy <amount></aqua> <gray>-</gray> <white>Purchase inventory protection charges</white>'
   help-toggle: '<aqua>/hyticinv toggle [player]</aqua> <gray>-</gray> <white>Toggle inventory protection on/off</white>'
   help-info: '<aqua>/hyticinv info [player]</aqua> <gray>-</gray> <white>View charge count and protection status</white>'
@@ -202,11 +87,8 @@ messages:
   help-setmax: '<aqua>/hyticinv setmax <amount></aqua> <gray>-</gray> <white>Update max charges per player (Admin)</white>'
   help-reload: '<aqua>/hyticinv reload</aqua> <gray>-</gray> <white>Reload configuration (Admin)</white>'
   help-help: '<aqua>/hyticinv help [page]</aqua> <gray>-</gray> <white>Show this help message</white>'
-  
-  # Footer for help pages
   help-footer: '<gradient:#00d4ff:#0099ff>═══════════════════════════════════════════════════</gradient>'
   
-  # ===== Status Messages =====
-  # Used in the info display to show protection status
+  # Status
   status-enabled: '<green>Enabled</green>'
   status-disabled: '<red>Disabled</red>'

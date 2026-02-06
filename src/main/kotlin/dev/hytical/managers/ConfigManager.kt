@@ -44,15 +44,12 @@ class ConfigManager(
     }
 
     fun getStorageMethod(): StorageType = StorageType.fromString(
-        config.getString(
-            "storage.method",
-            "sqlite"
-        )
+        config.getString("storage.method", "sqlite")
     )
 
     fun getMySQLHost(): String = config.getString("storage.mysql.host", "localhost") ?: "localhost"
     fun getMySQLPort(): Int = config.getInt("storage.mysql.port", 3306)
-    fun getMySQLDatabase(): String = config.getString("storage.mysql.database", "elyinv") ?: "elyinv"
+    fun getMySQLDatabase(): String = config.getString("storage.mysql.database", "hyticinv") ?: "hyticinv"
     fun getMySQLUsername(): String = config.getString("storage.mysql.username", "root") ?: "root"
     fun getMySQLPassword(): String = config.getString("storage.mysql.password", "password") ?: "password"
 
@@ -93,18 +90,15 @@ class ConfigManager(
         plugin.saveConfig()
     }
 
+    fun getPrefix(): String = config.getString("messages.prefix", "") ?: ""
+
     fun getMessage(key: String): String {
         val message = config.getString("messages.$key", "")
         return if (message.isNullOrEmpty()) {
             plugin.logger.warning("Missing message: messages.$key")
             "<red>Missing message: $key</red>"
         } else {
-            val prefix = config.getString("messages.prefix", "")
-            if (key.startsWith("help-") || key.endsWith("-header") || key.endsWith("-footer") || key == "prefix") {
-                message
-            } else {
-                prefix + message
-            }
+            message
         }
     }
 }

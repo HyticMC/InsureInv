@@ -1,7 +1,6 @@
 package dev.hytical
 
 import dev.hytical.command.HyticInvCommand
-import dev.hytical.command.HyticInvTabCompleter
 import dev.hytical.listeners.PlayerDeath
 import dev.hytical.managers.ConfigManager
 import dev.hytical.managers.EconomyManager
@@ -78,11 +77,10 @@ class HyticInv : JavaPlugin() {
             economyManager,
             messageManager
         )
-        val tabCompleterHandler = HyticInvTabCompleter()
 
         getCommand("hyticinv")?.apply {
             setExecutor(commandHandler)
-            tabCompleter = tabCompleterHandler
+            tabCompleter = commandHandler
         }
     }
 

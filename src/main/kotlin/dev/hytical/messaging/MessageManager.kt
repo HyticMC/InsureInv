@@ -4,7 +4,6 @@ import dev.hytical.HyticInv
 import dev.hytical.managers.ConfigManager
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -14,32 +13,50 @@ class MessageManager(
 ) {
     private val miniMessage: MiniMessage = MiniMessage.miniMessage()
 
-    fun shutdown() {
-        // No cleanup needed - Paper provides Adventure natively
-    }
+    private val noPrefixKeys = setOf(
+        "help-header", "help-footer", "help-buy", "help-toggle", "help-info",
+        "help-set", "help-setprice", "help-setmax", "help-reload", "help-help",
+        "info-header", "info-footer", "status-enabled", "status-disabled"
+    )
 
-    fun sendMessage(sender: CommandSender, messageKey: String, vararg resolvers: TagResolver) {
+    private val placeholderPattern = Regex("\\{([^}]+)}")
+
+    fun shutdown() {}
+
+    fun sendMessage(sender: CommandSender, messageKey: String, placeholders: Map<String, String> = emptyMap()) {
         val rawMessage = configManager.getMessage(messageKey)
-        val component = parseMessage(rawMessage, *resolvers)
+        val shouldAddPrefix = sender is Player && !noPrefixKeys.contains(messageKey)
+        val fullMessage = if (shouldAddPrefix) configManager.getPrefix() + rawMessage else rawMessage
+        val resolvedMessage = replacePlaceholders(fullMessage, placeholders)
+        val component = parseMessage(resolvedMessage)
         sender.sendMessage(component)
     }
 
-    fun sendMessage(player: Player, messageKey: String, vararg resolvers: TagResolver) {
+    fun sendMessage(player: Player, messageKey: String, placeholders: Map<String, String> = emptyMap()) {
         val rawMessage = configManager.getMessage(messageKey)
-        val component = parseMessage(rawMessage, *resolvers)
+        val shouldAddPrefix = !noPrefixKeys.contains(messageKey)
+        val fullMessage = if (shouldAddPrefix) configManager.getPrefix() + rawMessage else rawMessage
+        val resolvedMessage = replacePlaceholders(fullMessage, placeholders)
+        val component = parseMessage(resolvedMessage)
         player.sendMessage(component)
     }
 
-    fun parseMessage(message: String, vararg resolvers: TagResolver): Component {
-        return if (resolvers.isEmpty()) {
-            miniMessage.deserialize(message)
-        } else {
-            miniMessage.deserialize(message, TagResolver.resolver(*resolvers))
+    private fun replacePlaceholders(message: String, placeholders: Map<String, String>): String {
+        if (placeholders.isEmpty()) return message
+        
+        return placeholderPattern.replace(message) { matchResult ->
+            val key = matchResult.groupValues[1]
+            placeholders[key] ?: matchResult.value
         }
     }
 
-    fun sendRawMessage(sender: CommandSender, message: String) {
-        val component = miniMessage.deserialize(message)
+    fun parseMessage(message: String): Component {
+        return miniMessage.deserialize(message)
+    }
+
+    fun sendRawMessage(sender: CommandSender, message: String, placeholders: Map<String, String> = emptyMap()) {
+        val resolvedMessage = replacePlaceholders(message, placeholders)
+        val component = parseMessage(resolvedMessage)
         sender.sendMessage(component)
     }
 }

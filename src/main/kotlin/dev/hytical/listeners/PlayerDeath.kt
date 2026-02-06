@@ -42,7 +42,7 @@ class PlayerDeath(
 
         messageManager.sendMessage(
             player, "protection-triggered",
-            PlaceholderUtil.chargesResolver(playerData.charges, configManager.getMaxCharges())
+            PlaceholderUtil.charges(playerData.charges, configManager.getMaxCharges())
         )
     }
 }
