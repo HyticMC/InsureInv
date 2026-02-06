@@ -5,7 +5,7 @@ enum class StorageType {
 
     companion object {
         fun fromString(value: String?): StorageType {
-            return when(val upper = value?.uppercase()) {
+            return when (val upper = value?.uppercase()) {
                 "SQLITE" -> SQLITE
                 "MYSQL" -> MYSQL
                 "JSON" -> JSON

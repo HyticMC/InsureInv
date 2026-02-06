@@ -95,6 +95,7 @@ class HyticInvCommand(
                     }
                     .sorted()
             }
+
             args.size > 1 -> {
                 val subcommandName = args[0].lowercase()
                 val subcommand = subcommands[subcommandName] ?: return emptyList()
@@ -105,6 +106,7 @@ class HyticInvCommand(
 
                 subcommand.tabComplete(sender, args.map { it }.toTypedArray())
             }
+
             else -> emptyList()
         }
     }

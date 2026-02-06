@@ -1,6 +1,6 @@
 package dev.hytical.model
 
-import java.util.UUID
+import java.util.*
 
 data class PlayerData(
     val uuid: UUID,

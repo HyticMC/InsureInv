@@ -93,3 +93,6 @@ messages:
   # Status
   status-enabled: "<color:#99ff94>enabled</color>"
   status-disabled: "<color:#ff7817>disabled</color>"
+
+metrics:
+  enabled: true

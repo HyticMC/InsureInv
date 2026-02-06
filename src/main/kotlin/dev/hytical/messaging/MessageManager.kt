@@ -43,7 +43,7 @@ class MessageManager(
 
     private fun replacePlaceholders(message: String, placeholders: Map<String, String>): String {
         if (placeholders.isEmpty()) return message
-        
+
         return placeholderPattern.replace(message) { matchResult ->
             val key = matchResult.groupValues[1]
             placeholders[key] ?: matchResult.value

@@ -1,7 +1,7 @@
 package dev.hytical.storages
 
 import dev.hytical.model.PlayerData
-import java.util.UUID
+import java.util.*
 
 interface StorageBackend {
 

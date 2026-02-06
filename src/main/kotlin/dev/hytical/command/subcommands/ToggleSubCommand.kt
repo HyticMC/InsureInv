@@ -18,7 +18,7 @@ class ToggleSubCommand : HyticSubCommand {
         val configManager = context.configManager
 
         val targetName = context.arg(1)
-        
+
         if (targetName != null) {
             if (!sender.hasPermission("hyticinv.admin")) {
                 messageManager.sendMessage(sender, "no-permission")
@@ -87,6 +87,7 @@ class ToggleSubCommand : HyticSubCommand {
                     emptyList()
                 }
             }
+
             else -> emptyList()
         }
     }

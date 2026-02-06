@@ -102,4 +102,6 @@ class ConfigManager(
             message
         }
     }
+
+    fun getMetrics(): Boolean = config.getBoolean("metrics.enabled", true)
 }

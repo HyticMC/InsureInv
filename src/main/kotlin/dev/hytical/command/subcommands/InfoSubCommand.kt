@@ -94,6 +94,7 @@ class InfoSubCommand : HyticSubCommand {
                     emptyList()
                 }
             }
+
             else -> emptyList()
         }
     }

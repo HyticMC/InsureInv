@@ -61,6 +61,7 @@ class SetSubCommand : HyticSubCommand {
                     .map { it.name }
                     .filter { it.lowercase().startsWith(args[1].lowercase()) }
             }
+
             3 -> listOf("0", "1", "5", "10").filter { it.startsWith(args[2]) }
             else -> emptyList()
         }
