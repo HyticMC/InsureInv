@@ -19,7 +19,7 @@
     </properties>
 
     <build>
-        <finalName>${project.artifactId}-${project.version}-${git.commit.id.abbrev}</finalName>
+        <finalName>${project.artifactId}+${project.version}-${git.commit.id.abbrev}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <plugins>
