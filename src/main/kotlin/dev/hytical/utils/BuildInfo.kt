@@ -23,21 +23,24 @@ class BuildInfo(private val plugin: HyticInv) {
 
     private fun load(): GitInfo {
         val props = Properties()
-        val stream: InputStream? = this::class.java.classLoader.getResourceAsStream("git.properties")
+        val stream = javaClass.getResourceAsStream("/git.properties")
+            ?: Thread.currentThread().contextClassLoader.getResourceAsStream("git.properties")
+            ?: return default()
 
-        if (stream == null) return default()
+        return stream.use {
+            props.load(it)
 
-        stream.use { props.load(it) }
-
-        return GitInfo(
-            commitIdAbbrev = props.getProperty("git.commit.id.abbrev", "Unknown"),
-            commitMessage = props.getProperty("git.commit.message.short", "Unknown"),
-            commitTime = format(props.getProperty("git.commit.time")),
-            branch = props.getProperty("git.branch", "Unknown"),
-            buildTime = format(props.getProperty("git.build.time")),
-            buildVersion = plugin.pluginMeta.version,
-            isDirty = props.getProperty("git.dirty", "false").toBoolean()
-        )
+            GitInfo(
+                commitIdAbbrev = props.getProperty("git.commit.id.abbrev", "Unknown"),
+                commitMessage = props.getProperty("git.commit.message.short", "Unknown"),
+                commitTime = props.getProperty("git.commit.time")?.let { format(it) } ?: "Unknown",
+                branch = props.getProperty("git.branch", "Unknown"),
+                buildTime = props.getProperty("git.build.time")?.let { format(it) } ?: "Unknown",
+                buildVersion = plugin.pluginMeta.version,
+                isDirty = props.getProperty("git.dirty", "false")
+                    .toBooleanStrictOrNull() ?: false
+            )
+        }
     }
 
     private fun format(raw: String?): String {
