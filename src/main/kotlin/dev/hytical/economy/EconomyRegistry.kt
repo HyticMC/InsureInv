@@ -1,36 +1,40 @@
 package dev.hytical.economy
 
 import dev.hytical.HyticInv
-import dev.hytical.economy.impl.NoneEconomyProvider
+import java.util.logging.Logger
 
 class EconomyRegistry(
     private val plugin: HyticInv
 ) {
-    private val logger = plugin.logger
+    private val logger: Logger = plugin.logger
     private val config = plugin.configManager
 
     fun resolve(): EconomyProvider {
         val preferred = config.getEconomyProviderType()
 
-        preferred.creator.invoke()?.let {
+        createProvider(preferred)?.let {
             logger.info("Using economy provider: $preferred")
             return it
         }
 
         logger.warning("Preferred economy $preferred not available, trying fallback...")
 
-        val fallbackType = when (preferred) {
-            EconomyProviderType.VAULT -> EconomyProviderType.PLAYER_POINTS
-            EconomyProviderType.PLAYER_POINTS -> EconomyProviderType.VAULT
-        }
-
-
-        fallbackType.creator.invoke()?.let {
-            logger.warning("Fallback to economy provider: $fallbackType")
-            return it
+        for (type in EconomyProviderType.entries) {
+            if (type == preferred) continue
+            createProvider(type)?.let {
+                logger.warning("Fallback to economy provider: $type")
+                return it
+            }
         }
 
         logger.severe("No economy provider available. Using NONE provider.")
-        return NoneEconomyProvider()
+        return NoneEconomyProvider
+    }
+
+    private fun createProvider(type: EconomyProviderType): EconomyProvider? {
+        return when (type) {
+            EconomyProviderType.VAULT -> VaultEconomy.create()
+            EconomyProviderType.PLAYER_POINTS -> PlayerPointsEconomy.create()
+        }
     }
 }

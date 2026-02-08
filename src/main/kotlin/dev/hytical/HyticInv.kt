@@ -19,9 +19,9 @@
 package dev.hytical
 
 import dev.hytical.command.HyticInvCommand
+import dev.hytical.economy.EconomyManager
 import dev.hytical.listeners.PlayerDeath
 import dev.hytical.managers.ConfigManager
-import dev.hytical.economy.EconomyManager
 import dev.hytical.managers.SchedulerManager
 import dev.hytical.messaging.MessageManager
 import dev.hytical.metrics.EnvironmentDetector

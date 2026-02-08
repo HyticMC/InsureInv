@@ -1,13 +1,8 @@
 package dev.hytical.economy
 
-import dev.hytical.economy.impl.PlayerPointsEconomy
-import dev.hytical.economy.impl.VaultEconomy
-
-enum class EconomyProviderType(
-    val creator: () -> EconomyProvider?
-) {
-    VAULT({ VaultEconomy.create() }),
-    PLAYER_POINTS({ PlayerPointsEconomy.create() });
+enum class EconomyProviderType {
+    VAULT,
+    PLAYER_POINTS;
 
     companion object {
         fun fromString(value: String?): EconomyProviderType {

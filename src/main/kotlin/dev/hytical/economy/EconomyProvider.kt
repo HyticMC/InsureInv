@@ -2,7 +2,7 @@ package dev.hytical.economy
 
 import org.bukkit.OfflinePlayer
 
-interface EconomyProvider {
+sealed interface EconomyProvider {
     fun isAvailable(): Boolean
 
     fun getBalance(player: OfflinePlayer): Double

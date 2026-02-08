@@ -1,56 +1,46 @@
-package dev.hytical.economy.impl
-
-import dev.hytical.economy.EconomyProvider
+package dev.hytical.economy
 import org.black_ixx.playerpoints.PlayerPoints
 import org.black_ixx.playerpoints.PlayerPointsAPI
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
-import java.util.logging.Logger
 
-class PlayerPointsEconomy(private val ppAPI: PlayerPointsAPI) : EconomyProvider {
+class PlayerPointsEconomy(private val api: PlayerPointsAPI) : EconomyProvider {
 
     override fun isAvailable(): Boolean = true
 
     override fun getBalance(player: OfflinePlayer): Double {
-        val uuid = player.uniqueId
-        val points = ppAPI.look(uuid)
+        val points = api.look(player.uniqueId)
         return if (points >= 0) points.toDouble() else 0.0
     }
 
     override fun hasBalance(player: OfflinePlayer, amount: Double): Boolean {
-        val uuid = player.uniqueId
-        val points = ppAPI.look(uuid)
+        val points = api.look(player.uniqueId)
         return points >= 0 && points >= amount.toInt()
     }
 
     override fun withdraw(player: OfflinePlayer, amount: Double): Boolean {
         if (amount <= 0) return false
-        val uuid = player.uniqueId
         val value = amount.toInt()
         if (value <= 0) return false
 
-        val current = ppAPI.look(uuid)
+        val current = api.look(player.uniqueId)
         if (current < 0 || current < value) return false
 
-        return ppAPI.take(uuid, value)
+        return api.take(player.uniqueId, value)
     }
 
     override fun deposit(player: OfflinePlayer, amount: Double): Boolean {
         if (amount <= 0) return false
-        val uuid = player.uniqueId
         val value = amount.toInt()
         if (value <= 0) return false
 
-        return ppAPI.give(uuid, value)
+        return api.give(player.uniqueId, value)
     }
 
-    override fun formatAmount(amount: Double): String {
-        val value = amount.toInt()
-        return "%,d".format(value)
-    }
+    override fun formatAmount(amount: Double): String = "%,d".format(amount.toInt())
 
     companion object {
-        fun create(): EconomyProvider? {
+        fun create(): PlayerPointsEconomy? {
             val plugin = Bukkit.getPluginManager().getPlugin("PlayerPoints")
                 ?: return null
 

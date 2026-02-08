@@ -100,6 +100,7 @@ class ConfigManager(
                 plugin.logger.warning("Missing message: messages.$key")
                 "<red>Missing message: $key</red>"
             }
+
             else -> message
         }
     }

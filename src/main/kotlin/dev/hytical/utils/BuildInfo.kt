@@ -4,8 +4,7 @@ import dev.hytical.HyticInv
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Properties
-import java.io.InputStream
+import java.util.*
 
 class BuildInfo(private val plugin: HyticInv) {
 

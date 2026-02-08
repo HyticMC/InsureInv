@@ -3,9 +3,6 @@ package dev.hytical.command.subcommands
 import dev.hytical.HyticInv
 import dev.hytical.command.CommandContext
 import dev.hytical.command.HyticSubCommand
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.event.ClickEvent
-import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.command.CommandSender
 
@@ -20,7 +17,11 @@ class HyticVersion(
 
     override fun execute(context: CommandContext) {
         listOf(
-            "<white><color:#FFC0CB>${plugin.name} ${i.buildVersion}</color> <white>ʙʏ</white> <gray>${plugin.pluginMeta.authors.joinToString(" and ")}</gray>",
+            "<white><color:#FFC0CB>${plugin.name} ${i.buildVersion}</color> <white>ʙʏ</white> <gray>${
+                plugin.pluginMeta.authors.joinToString(
+                    " and "
+                )
+            }</gray>",
             "<gray>┌─</gray><white>ʙʀᴀɴᴄʜ:</white> <#76D7C4>${i.branch}</#76D7C4>",
             "<gray>├─</gray><white>ᴄᴏᴍᴍɪᴛ:</white> <#48C9B0>${i.commitIdAbbrev}</#48C9B0>",
             "<gray>├─</gray><white>ᴍᴇssᴀɢᴇ:</white> <#A3E4D7>${i.commitMessage}</#A3E4D7>",
