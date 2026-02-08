@@ -1,6 +1,7 @@
 package dev.hytical.managers
 
 import dev.hytical.HyticInv
+import dev.hytical.economy.EconomyProviderType
 import dev.hytical.storages.StorageType
 import org.bukkit.configuration.file.FileConfiguration
 
@@ -101,6 +102,12 @@ class ConfigManager(
             }
             else -> message
         }
+    }
+
+    fun getEconomyProviderType(): EconomyProviderType {
+        return EconomyProviderType.fromString(
+            config.getString("economy.provider")?.uppercase()
+        )
     }
 
     fun getMetrics(): Boolean = config.getBoolean("metrics.enabled", true)

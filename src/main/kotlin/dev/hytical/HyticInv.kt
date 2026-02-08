@@ -21,7 +21,7 @@ package dev.hytical
 import dev.hytical.command.HyticInvCommand
 import dev.hytical.listeners.PlayerDeath
 import dev.hytical.managers.ConfigManager
-import dev.hytical.managers.EconomyManager
+import dev.hytical.economy.EconomyManager
 import dev.hytical.managers.SchedulerManager
 import dev.hytical.messaging.MessageManager
 import dev.hytical.metrics.EnvironmentDetector
@@ -81,12 +81,6 @@ class HyticInv : JavaPlugin() {
         messageManager = MessageManager(this, configManager)
 
         economyManager = EconomyManager(this)
-        if (!economyManager.initialize()) {
-            economyEnabled = false
-            logger.warning("Economy system unavailable. Purchase command will be disabled.")
-        } else {
-            economyEnabled = true
-        }
 
         storageManager = StorageManager(this, configManager)
         if (!storageManager.initialize()) {
@@ -156,6 +150,4 @@ class HyticInv : JavaPlugin() {
             )
         }
     }
-
-    fun isEconomyEnabled(): Boolean = economyEnabled
 }

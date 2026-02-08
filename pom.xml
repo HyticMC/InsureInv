@@ -137,6 +137,10 @@
             <id>tcoded-repo</id>
             <url>https://repo.tcoded.com/releases</url>
         </repository>
+        <repository>
+            <id>rosewood-repo</id>
+            <url>https://repo.rosewooddev.io/repository/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -200,6 +204,13 @@
             <artifactId>FoliaLib</artifactId>
             <version>0.4.3</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.black_ixx</groupId>
+            <artifactId>playerpoints</artifactId>
+            <version>3.3.3</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

@@ -9,6 +9,7 @@ description: Inventory protection plugin with economy integration
 
 softdepend:
   - Vault
+  - PlayerPoints
   - PlaceholderAPI
 
 libraries:
