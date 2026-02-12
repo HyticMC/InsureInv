@@ -30,7 +30,7 @@ economy:
 
 messages:
   enable-prefix: false
-  prefix: "<gradient:#00d4ff:#0099ff><bold>[ʜʏᴛɪᴄɪɴᴠ]</bold></gradient> <dark_gray>»</dark_gray> <white>"
+  prefix: "<gradient:#00d4ff:#0099ff><bold>[ ɪɴѕᴜʀᴇɪɴᴠ ]</bold></gradient> <dark_gray>»</dark_gray> <white>"
   
   # Purchase
   buy-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴍᴜᴀ <color:#99ff94>{amount}</color> ʟầɴ sử ᴅụɴɢ ᴠớɪ <color:#99ff94>${price}</color>! ʙạɴ ᴄòɴ <color:#99ff94>{charges}</color>/{max} ʟầɴ."
