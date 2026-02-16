@@ -19,7 +19,7 @@ out/
 *.ctxt
 
 # Package Files #
-*.jar
+build/**/*.jar
 *.war
 *.nar
 *.ear
@@ -101,7 +101,7 @@ build/
 .gradle/
 .kotlin/
 target/
-!libs/*.jar
+!libs/
 !gradle/
 
 # Common working directory
