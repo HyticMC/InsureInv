@@ -31,16 +31,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          # cache: 'maven'  # TẠM THỜI COMMENT để tránh lỗi
-
-      - name: Check for relevant changes
-        id: changes
-        run: |
-          if git diff --name-only HEAD~1 HEAD | grep -E '\.(kt|java|xml|yml|yaml|json|properties)$' | grep -v '.md' > /dev/null; then
-            echo "has_code_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_code_changes=false" >> $GITHUB_OUTPUT
-          fi
+          cache: 'maven'
 
       - name: Cache Maven dependencies
         if: steps.changes.outputs.has_code_changes == 'true'
