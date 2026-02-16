@@ -31,7 +31,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: 'maven'
+          # cache: 'maven' tf
 
       - name: Cache Maven dependencies
         if: steps.changes.outputs.has_code_changes == 'true'
