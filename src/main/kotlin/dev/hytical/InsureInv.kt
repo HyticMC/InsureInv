@@ -23,7 +23,7 @@ import dev.hytical.economy.EconomyManager
 import dev.hytical.listeners.PlayerDeath
 import dev.hytical.managers.ConfigManager
 import dev.hytical.managers.SchedulerManager
-import dev.hytical.messaging.MessageManager
+import dev.hytical.i18n.MessageManager
 import dev.hytical.metrics.EnvironmentDetector
 import dev.hytical.metrics.MetricsManager
 import dev.hytical.metrics.ServerType
@@ -92,17 +92,13 @@ open class InsureInv : JavaPlugin() {
         registerCommands()
         registerEvents()
 
-        logger.info("InsureInv v${this.pluginMeta.version} enabled successfully!")
+        logger.info("InsureInv v${this.pluginMeta.version} enabled successfully,! Have Fun :D")
         sendStartupLog()
     }
 
     override fun onDisable() {
         if (::storageManager.isInitialized) {
             storageManager.shutdown()
-        }
-
-        if (::messageManager.isInitialized) {
-            messageManager.shutdown()
         }
 
         logger.info("InsureInv disabled.")

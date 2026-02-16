@@ -1,7 +1,7 @@
 package dev.hytical.listeners
 
 import dev.hytical.managers.ConfigManager
-import dev.hytical.messaging.MessageManager
+import dev.hytical.i18n.MessageManager
 import dev.hytical.storages.StorageManager
 import dev.hytical.utils.PlaceholderUtil
 import org.bukkit.event.EventHandler

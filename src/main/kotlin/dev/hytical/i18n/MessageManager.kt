@@ -1,4 +1,4 @@
-package dev.hytical.messaging
+package dev.hytical.i18n
 
 import dev.hytical.InsureInv
 import dev.hytical.managers.ConfigManager
@@ -20,8 +20,6 @@ class MessageManager(
     )
 
     private val placeholderPattern = Regex("\\{([^}]+)}")
-
-    fun shutdown() {}
 
     fun sendMessage(sender: CommandSender, messageKey: String, placeholders: Map<String, String> = emptyMap()) {
         val rawMessage = configManager.getMessage(messageKey)

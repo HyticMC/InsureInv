@@ -4,15 +4,20 @@ import dev.hytical.InsureInv
 import dev.hytical.economy.EconomyProviderType
 import dev.hytical.storages.StorageType
 import org.bukkit.configuration.file.FileConfiguration
+import java.io.File
 
 @Suppress("unused")
 class ConfigManager(
     private val plugin: InsureInv
 ) {
     private var config: FileConfiguration = plugin.config
+    private val langFol = File(plugin.dataFolder, "languages")
 
     init {
         plugin.saveDefaultConfig()
+        if(!langFol.exists()) {
+            langFol.mkdirs()
+        }
         reload()
     }
 

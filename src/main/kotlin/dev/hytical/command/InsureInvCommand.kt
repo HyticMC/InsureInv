@@ -4,7 +4,7 @@ import dev.hytical.InsureInv
 import dev.hytical.command.subcommands.*
 import dev.hytical.economy.EconomyManager
 import dev.hytical.managers.ConfigManager
-import dev.hytical.messaging.MessageManager
+import dev.hytical.i18n.MessageManager
 import dev.hytical.storages.StorageManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

@@ -23,6 +23,7 @@ class StorageManager(
     fun initialize(): Boolean {
         val preferredMethod = configManager.getStorageMethod()
         plugin.logger.info("Attempting to initialize storage with method: $preferredMethod")
+        val startupTime: Long = System.nanoTime()
 
         val backends = when (preferredMethod) {
             StorageType.MYSQL -> listOf(
@@ -45,7 +46,7 @@ class StorageManager(
             val backend = backendFactory()
             if (backend.initialize()) {
                 currentBackend = backend
-                plugin.logger.info("Successfully initialized ${backend.getName()} storage")
+                plugin.logger.info("Successfully initialized ${backend.getName()} storage in ${"%.2f".format((System.nanoTime() - startupTime) / 1_000_000.0)}ms")
                 return true
             } else {
                 plugin.logger.warning("Failed to initialize ${backend.getName()} storage, trying next option...")

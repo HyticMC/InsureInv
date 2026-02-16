@@ -3,7 +3,7 @@ package dev.hytical.command
 import dev.hytical.InsureInv
 import dev.hytical.economy.EconomyManager
 import dev.hytical.managers.ConfigManager
-import dev.hytical.messaging.MessageManager
+import dev.hytical.i18n.MessageManager
 import dev.hytical.storages.StorageManager
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
