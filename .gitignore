@@ -102,6 +102,7 @@ build/
 .kotlin/
 target/
 !libs/*.jar
+!gradle/
 
 # Common working directory
 run/
