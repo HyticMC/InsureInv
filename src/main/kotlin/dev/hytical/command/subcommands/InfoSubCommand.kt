@@ -55,8 +55,10 @@ class InfoSubCommand : InsureInvSubCommand {
         val playerData = storageManager.getPlayerData(targetPlayer)
         val maxCharges = configManager.getMaxCharges()
 
-        val statusMessage = configManager.getMessage(
-            if (playerData.protectionEnabled) "status-enabled" else "status-disabled"
+        val statusKey = if (playerData.protectionEnabled) "status-enabled" else "status-disabled"
+        val statusMessage = dev.hytical.i18n.PluginLang.raw(
+            targetPlayer.uniqueId,
+            "status.${if (playerData.protectionEnabled) "enabled" else "disabled"}"
         )
 
         messageManager.sendMessage(sender, "info-header")

@@ -21,9 +21,12 @@ package dev.hytical
 import dev.hytical.command.InsureInvCommand
 import dev.hytical.economy.EconomyManager
 import dev.hytical.listeners.PlayerDeath
+import dev.hytical.listeners.PlayerLangListener
 import dev.hytical.managers.ConfigManager
 import dev.hytical.managers.SchedulerManager
+import dev.hytical.i18n.I18nManager
 import dev.hytical.i18n.MessageManager
+import dev.hytical.i18n.PluginLang
 import dev.hytical.metrics.EnvironmentDetector
 import dev.hytical.metrics.MetricsManager
 import dev.hytical.metrics.ServerType
@@ -40,6 +43,8 @@ open class InsureInv : JavaPlugin() {
     lateinit var configManager: ConfigManager
         private set
     lateinit var metricsManager: MetricsManager
+        private set
+    lateinit var i18nManager: I18nManager
         private set
     lateinit var messageManager: MessageManager
         private set
@@ -77,6 +82,10 @@ open class InsureInv : JavaPlugin() {
         metricsManager = MetricsManager(this, pluginId)
         metricsManager.start()
 
+        i18nManager = I18nManager(this, configManager.getDefaultLanguage())
+        i18nManager.initialize()
+        PluginLang.bind(i18nManager)
+
         messageManager = MessageManager(this, configManager)
 
         economyManager = EconomyManager(this)
@@ -97,11 +106,19 @@ open class InsureInv : JavaPlugin() {
     }
 
     override fun onDisable() {
+        if (::i18nManager.isInitialized) {
+            i18nManager.shutdown()
+        }
+
         if (::storageManager.isInitialized) {
             storageManager.shutdown()
         }
 
         logger.info("InsureInv disabled.")
+    }
+
+    fun reloadI18n() {
+        i18nManager.rebuild()
     }
 
     private fun registerCommands() {
@@ -126,7 +143,13 @@ open class InsureInv : JavaPlugin() {
             messageManager
         )
 
+        val playerLangListener = PlayerLangListener(
+            i18nManager,
+            configManager
+        )
+
         server.pluginManager.registerEvents(playerDeath, this)
+        server.pluginManager.registerEvents(playerLangListener, this)
     }
 
     private fun sendStartupLog() {

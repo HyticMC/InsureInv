@@ -11,7 +11,7 @@ class ConfigManager(
     private val plugin: InsureInv
 ) {
     private var config: FileConfiguration = plugin.config
-    private val langFol = File(plugin.dataFolder, "languages")
+    private val langFol = File(plugin.dataFolder, "lang")
 
     init {
         plugin.saveDefaultConfig()
@@ -99,16 +99,9 @@ class ConfigManager(
     fun isPrefixEnabled(): Boolean = config.getBoolean("messages.enable-prefix", true)
     fun getPrefix(): String = config.getString("messages.prefix", "") ?: ""
 
-    fun getMessage(key: String): String {
-        return when (val message = config.getString("messages.$key")) {
-            null -> {
-                plugin.logger.warning("Missing message: messages.$key")
-                "<red>Missing message: $key</red>"
-            }
-
-            else -> message
-        }
-    }
+    fun getDefaultLanguage(): String = config.getString("i18n.default-language", "en_US") ?: "en_US"
+    fun isPreloadOnJoin(): Boolean = config.getBoolean("i18n.preload-on-join", true)
+    fun isInvalidateOnQuit(): Boolean = config.getBoolean("i18n.invalidate-on-quit", true)
 
     fun getEconomyProviderType(): EconomyProviderType {
         return EconomyProviderType.fromString(

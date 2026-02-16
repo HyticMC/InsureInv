@@ -31,6 +31,9 @@ class InsureInvCommand(
             put("setprice", SetPriceSubCommand())
             put("setmax", SetMaxSubCommand())
             put("reload", ReloadSubCommand())
+            put("langreload", LangReloadSubCommand())
+            put("langtest", LangTestSubCommand())
+            put("setlang", SetLangSubCommand())
             put("help", HelpSubCommand { subcommands })
             put("version", VersionCommand(plugin))
         }

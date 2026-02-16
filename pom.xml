@@ -89,6 +89,15 @@
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <minimizeJar>false</minimizeJar>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.tcoded:FoliaLib</include>
+                                    <include>org.bstats:bstats-bukkit</include>
+                                    <include>org.bstats:bstats-base</include>
+                                    <include>dev.hytical:hyticallib-i18n-core</include>
+                                    <include>dev.hytical:hyticallib-i18n-bukkit</include>
+                                </includes>
+                            </artifactSet>
                             <relocations>
                                 <relocation>
                                     <pattern>com.tcoded.folialib</pattern>
@@ -216,6 +225,20 @@
             <groupId>com.tcoded</groupId>
             <artifactId>FoliaLib</artifactId>
             <version>0.4.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.hytical</groupId>
+            <artifactId>hyticallib-i18n-core</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.hytical</groupId>
+            <artifactId>hyticallib-i18n-bukkit</artifactId>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 
