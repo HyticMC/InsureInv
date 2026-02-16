@@ -1,5 +1,5 @@
-name: '${project.name}'
-version: '${project.version}-${git.commit.id.abbrev}'
+name: '${name}'
+version: '${version}-${gitCommit}'
 main: dev.hytical.InsureInv
 api-version: '1.21'
 folia-supported: true
