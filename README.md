@@ -1,146 +1,75 @@
 # InsureInv
 
-InsureInv is a robust inventory protection plugin for modern Minecraft servers (Paper, Spigot, and Folia). It allows players to safeguard their inventory upon death by consuming a "protection charge." These charges can be purchased using an in-game economy, creating a balanced and engaging server feature.
+Plugin bảo vệ inventory cho Minecraft server. Dựa trên hệ thống charge có thể mua bằng tiền in-game. Hỗ trợ Folia và Paper 1.21+.
 
-## Features
+## Storage
 
-*   **Keep Inventory on Death:** Prevents item loss by consuming a protection charge.
-*   **Economy Integration:** Utilizes Vault for players to buy protection charges.
-*   **Toggleable Protection:** Players can enable or disable protection at will.
-*   **Flexible Data Storage:** Supports MySQL, SQLite, and JSON for storing player data, with an automatic fallback system to ensure data integrity.
-*   **Folia Support:** Built with modern server architectures in mind, including region-based scheduling for Folia.
-*   **Admin Management:** Comprehensive commands for administrators to manage player charges, set prices, and reload configurations.
-*   **Customizable Messages:** Fully customizable, MiniMessage-supported messages for a seamless server aesthetic.
-*   **PlaceholderAPI Support:** Integrates with PlaceholderAPI to display player data.
+Plugin hỗ trợ 3 loại lưu trữ dữ liệu:
 
-## Installation
+- **SQLite** — mặc định, không cần cấu hình thêm
+- **MySQL** — dùng HikariCP connection pool, cấu hình trong `config.yml`
+- **JSON** — lưu file JSON đơn giản
 
-1.  Download the latest release of `InsureInv.jar`.
-2.  Place the `.jar` file into your server's `/plugins` directory.
-3.  Ensure you have **Vault** and a compatible economy plugin (like EssentialsX) installed.
-4.  (Optional) Install **PlaceholderAPI** for placeholder support.
-5.  Start or restart your server.
-6.  Customize the generated `config.yml` file in `/plugins/InsureInv/` to your liking.
+```yaml
+storage:
+  method: sqlite  # sqlite | mysql | json
+```
+
+## Economy API
+
+Plugin tích hợp với các hệ thống economy thông qua `economy.provider` trong `config.yml`:
+
+| Provider | Mô tả |
+|---|---|
+| `VAULT` | Sử dụng Vault API (mặc định) |
+| `PLAYER_POINTS` | Sử dụng PlayerPoints |
+| `NONE` | Tắt tính năng economy, mọi giao dịch đều bị từ chối |
+
+```yaml
+economy:
+  provider: VAULT
+  price-per-charge: 100.0
+  max-charges-per-player: 10
+```
 
 ## Commands
 
-InsureInv uses the base command `/insureinv` (aliases: `/inv`, `/hinv`).
+Lệnh chính: `/insureinv` (alias: `/inv`, `/hinv`)
 
-| Command                       | Description                                            | Permission       |
-| :---------------------------- | :----------------------------------------------------- | :--------------- |
-| `/insureinv buy <amount>`      | Purchase a specified amount of protection charges.     | `hyticinv.use`   |
-| `/insureinv toggle`            | Enable or disable your inventory protection.           | `hyticinv.use`   |
-| `/insureinv info`              | View your current protection charges and status.       | `hyticinv.use`   |
-| `/insureinv help [page]`       | Displays the help menu.                                | `hyticinv.use`   |
-| `/insureinv reload`            | Reloads the plugin configuration.                      | `hyticinv.admin` |
-| `/insureinv set <player> <amount>`| Set a player's protection charges to a specific amount. | `hyticinv.admin` |
-| `/insureinv setprice <price>`  | Set the price for a single protection charge.          | `hyticinv.admin` |
-| `/insureinv setmax <amount>`   | Set the maximum charges a player can hold.             | `hyticinv.admin` |
-| `/insureinv toggle <player>`   | Toggle inventory protection for another player.        | `hyticinv.admin` |
-| `/insureinv info <player>`     | View another player's protection charges and status.   | `hyticinv.admin` |
+| Lệnh | Mô tả | Quyền |
+|---|---|---|
+| `/insureinv buy <số lượng>` | Mua charge bảo vệ inventory | `insureinv.use` |
+| `/insureinv toggle [player]` | Bật/tắt bảo vệ inventory | `insureinv.use` |
+| `/insureinv info [player]` | Xem thông tin charge và trạng thái | `insureinv.use` |
+| `/insureinv help` | Hiển thị danh sách lệnh | `insureinv.use` |
+| `/insureinv set <player> <số lượng>` | Đặt số charge cho người chơi | `insureinv.admin` |
+| `/insureinv setprice <giá>` | Thay đổi giá mỗi charge | `insureinv.admin` |
+| `/insureinv setmax <số>` | Thay đổi charge tối đa | `insureinv.admin` |
+| `/insureinv setlang <mã ngôn ngữ>` | Đặt ngôn ngữ cho bản thân | `insureinv.use` |
+| `/insureinv langreload` | Reload file ngôn ngữ | `insureinv.admin` |
+| `/insureinv reload` | Reload config plugin | `insureinv.admin` |
+| `/insureinv version` | Xem thông tin phiên bản và build | `insureinv.admin` |
 
 ## Permissions
 
-*   `insureinv.use` - Grants access to basic user commands (`/buy`, `/toggle`, `/info`, `/help`). (Default: `true`)
-*   `insureinv.admin` - Grants access to all administrative commands and the ability to manage other players. (Default: `op`)
+| Quyền | Mô tả | Mặc định |
+|---|---|---|
+| `insureinv.use` | Sử dụng các lệnh cơ bản (buy, toggle, info, help, setlang) | `true` |
+| `insureinv.admin` | Sử dụng các lệnh quản trị (set, setprice, setmax, reload, langreload, version) | `op` |
 
-## Configuration
+`insureinv.admin` kế thừa `insureinv.use`.
 
-The `config.yml` is divided into three main sections:
+## Metrics
 
-### `storage`
+Plugin sử dụng [bStats](https://bstats.org/) để thu thập dữ liệu ẩn danh (phiên bản server, số người chơi, ...).
 
-Configure how player data is stored.
+Để tắt metrics, mở `config.yml` và sửa:
 
-*   `method`: The desired storage method. Can be `mysql`, `sqlite`, or `json`. The plugin will attempt to initialize in this order and fall back to a simpler method if the preferred one fails.
-*   `mysql`: Credentials and connection pool settings for your MySQL database.
-*   `sqlite`: Path for the SQLite database file (relative to the plugin folder).
-*   `json`: Path for the JSON data file (relative to the plugin folder).
-
-### `economy`
-
-Manage the economic aspects of the plugin.
-
-*   `price-per-charge`: The cost for one protection charge.
-*   `max-charges-per-player`: The maximum number of charges a player can accumulate.
-
-### `messages`
-
-Customize all user-facing messages.
-
-*   `enable-prefix`: Toggles a global message prefix.
-*   `prefix`: The prefix to be displayed before messages.
-*   All other keys correspond to specific messages for commands, events, and errors. These messages support the [MiniMessage](https://docs.adventure.kyori.net/minimessage/format.html) format for advanced color and style formatting.
-
-## Metrics Collection
-
-This plugin uses [bStats](https://bstats.org/) to collect anonymous usage statistics. This helps the developers understand how the plugin is used and identify areas for improvement.
-
-**To disable metrics collection:**
-
-1. Open `plugins/InsureInv/config.yml`
-2. Find the metrics section:
 ```yaml
 metrics:
   enabled: false
 ```
-3. Restart your server
-
-## Building from Source
-
-### Prerequisites
-
-- **Java 21 JDK**
-- **Apache Maven 3.9+**
-- **Git**
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/HyticMC/InsureInv.git
-cd InsureInv
-```
-
-### 2. Build with Maven
-
-```bash
-mvn clean package
-```
-
-### 3. Locate the output
-
-The compiled plugin JAR file will be generated in:
-
-```
-target/InsureInv-*.jar
-```
-
-### 4. Install to server
-
-1. Copy the JAR file to your server's `plugins/` directory
-2. Restart or reload your server
-
-### For Development
-
-- Clean build: `mvn clean install`
-- Skip tests: `mvn clean package -DskipTests`
-- Build only: `mvn compile`
-- Package without tests: `mvn package -DskipTests`
-- **Run tests**: `mvn test`
-
-### Common Issues
-
-- **Java version error**: Ensure JAVA_HOME points to Java 21+
-- **Dependency errors**: Run `mvn clean install -U` to update dependencies
-- **Build failure**: Check Maven and Java versions meet requirements
 
 ## License
 
-This project is licensed under the **GNU General Public License v3.0**.  
-In short: you can use, modify, and distribute this plugin freely,  
-as long as you keep it open and free for others too.
-
-> *"Free software is a matter of liberty, not price."*  
-> — Richard Stallman
-
-For full legal details, see the [LICENSE](LICENSE) file.
+Plugin được phân phối theo giấy phép [GNU General Public License v3.0](LICENSE).
