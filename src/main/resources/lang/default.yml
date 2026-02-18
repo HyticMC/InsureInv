@@ -5,8 +5,8 @@ buy:
   invalid-amount: "<gradient:#ff7817:#ffc46b>Invalid amount! Please specify a positive number.</gradient>"
 
 toggle:
-  on: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Inventory protection <color:#99ff94>enabled</color>! You have <color:#99ff94>{charges}</color> charge(s) remaining."
-  off: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Inventory protection <color:#ff7817>disabled</color>! Your inventory will not be protected on death."
+  "on": "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Inventory protection <color:#99ff94>enabled</color>! You have <color:#99ff94>{charges}</color> charge(s) remaining."
+  "off": "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Inventory protection <color:#ff7817>disabled</color>! Your inventory will not be protected on death."
 
 protection:
   triggered: "<gradient:#00ff00:#00aa00>Your inventory has been protected! <color:#99ff94>{charges}</color> charge(s) remaining.</gradient>"

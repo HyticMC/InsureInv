@@ -5,8 +5,8 @@ buy:
   invalid-amount: "<gradient:#ff7817:#ffc46b>số ʟượɴɢ ᴋʜôɴɢ ʜợᴘ ʟệ! ᴠᴜɪ ʟòɴɢ ᴄʜỉ địɴʜ ᴍộᴛ số ᴅươɴɢ.</gradient>"
 
 toggle:
-  on: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#99ff94>ʙậᴛ</color>! ʙạɴ ᴄòɴ <color:#99ff94>{charges}</color> ʟầɴ sử ᴅụɴɢ."
-  off: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#ff7817>ᴛắᴛ</color>! ᴛúɪ đồ ᴄủᴀ ʙạɴ sẽ ᴋʜôɴɢ đượᴄ ʙảᴏ ᴠệ ᴋʜɪ ᴄʜếᴛ."
+  "on": "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#99ff94>ʙậᴛ</color>! ʙạɴ ᴄòɴ <color:#99ff94>{charges}</color> ʟầɴ sử ᴅụɴɢ."
+  "off": "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ʙảᴏ ᴠệ ᴛúɪ đồ <color:#ff7817>ᴛắᴛ</color>! ᴛúɪ đồ ᴄủᴀ ʙạɴ sẽ ᴋʜôɴɢ đượᴄ ʙảᴏ ᴠệ ᴋʜɪ ᴄʜếᴛ."
 
 protection:
   triggered: "<gradient:#00ff00:#00aa00>ᴛúɪ đồ ᴄủᴀ ʙạɴ đã đượᴄ ʙảᴏ ᴠệ! ᴄòɴ <color:#99ff94>{charges}</color> ʟầɴ sử ᴅụɴɢ.</gradient>"
