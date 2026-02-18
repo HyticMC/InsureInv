@@ -89,6 +89,7 @@ tasks.shadowJar {
 
     relocate("com.tcoded.folialib", "dev.hytical.libs.folialib")
     relocate("org.bstats", "dev.hytical.libs.bstats")
+    relocate("dev.hytical.i18n", "dev.hytical.libs.i18n")
 
     exclude("META-INF/*.SF")
     exclude("META-INF/*.DSA")
