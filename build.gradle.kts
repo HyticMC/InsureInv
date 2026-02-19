@@ -1,15 +1,64 @@
+import java.time.Instant
+
 plugins {
-    kotlin("jvm")
-    id("com.gradleup.shadow")
+    kotlin("jvm") version "2.3.10"
+    id("com.gradleup.shadow") version "9.3.1"
 }
 
 // ---------------------------------------------------------------------------
-// Git commit hash
+// Git properties generation (tương tự git-commit-id-maven-plugin)
 // ---------------------------------------------------------------------------
-val gitCommitShort: String = providers.exec {
+val generateGitProperties by tasks.registering {
+    group = "build"
+    description = "Generates git.properties file with commit information"
+
+    val outputFile = layout.buildDirectory.file("generated/resources/git/git.properties")
+
+    // Input tracking để Gradle biết khi nào cần regenerate
+    inputs.property("git.head", providers.exec {
+        commandLine("git", "rev-parse", "HEAD")
+        isIgnoreExitValue = true
+    }.standardOutput.asText.map { it.trim() }.orElse("unknown"))
+
+    outputs.file(outputFile)
+
+    doLast {
+        fun runGit(command: String): String = providers.exec {
+            commandLine("git", *command.split(" ").toTypedArray())
+            isIgnoreExitValue = true
+        }.standardOutput.asText.map { it.trim() }.getOrElse("unknown")
+
+        val props = mapOf(
+            "git.commit.id" to runGit("rev-parse HEAD"),
+            "git.commit.id.abbrev" to runGit("rev-parse --short HEAD"),
+            "git.commit.message.short" to runGit("log -1 --pretty=%s"),
+            "git.commit.time" to runGit("log -1 --pretty=%cI"),
+            "git.branch" to runGit("rev-parse --abbrev-ref HEAD"),
+            "git.build.time" to Instant.now().toString(),
+            "git.dirty" to (runGit("status --porcelain").isNotBlank()).toString()
+        )
+
+        outputFile.get().asFile.apply {
+            parentFile.mkdirs()
+            writeText(props.entries.joinToString("\n") { "${it.key}=${it.value}" })
+        }
+    }
+}
+
+// Define gitCommitShort at top level for reuse
+val gitCommitShort = providers.exec {
     commandLine("git", "rev-parse", "--short", "HEAD")
     isIgnoreExitValue = true
 }.standardOutput.asText.map { it.trim() }.getOrElse("unknown")
+
+// Thêm generated resources vào sourceSets
+sourceSets {
+    main {
+        resources {
+            srcDir(layout.buildDirectory.dir("generated/resources/git"))
+        }
+    }
+}
 
 // ---------------------------------------------------------------------------
 // Repositories
@@ -61,6 +110,8 @@ kotlin {
 // Resource filtering  (plugin.yml token replacement)
 // ---------------------------------------------------------------------------
 tasks.processResources {
+    dependsOn(generateGitProperties) // Đảm bảo git.properties được generate trước
+
     val props = mapOf(
         "name"      to project.name,
         "version"   to project.version.toString(),
@@ -105,4 +156,20 @@ tasks.shadowJar {
 // shadowJar replaces the default jar
 tasks.build {
     dependsOn(tasks.shadowJar)
+}
+
+// ---------------------------------------------------------------------------
+// Tasks
+// ---------------------------------------------------------------------------
+tasks.register("printGitInfo") {
+    group = "help"
+    description = "Prints current git information"
+    doLast {
+        println("\n=== Git Information ===")
+        file(layout.buildDirectory.file("generated/resources/git/git.properties").get().asFile)
+            .takeIf { it.exists() }
+            ?.readLines()
+            ?.forEach { println(it) }
+            ?: println("Git properties not generated yet. Run 'build' first.")
+    }
 }
