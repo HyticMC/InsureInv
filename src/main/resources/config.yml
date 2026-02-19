@@ -1,4 +1,4 @@
-# InsureInv Configuration
+# InsureInvPlugin Configuration
 
 storage:
   method: sqlite

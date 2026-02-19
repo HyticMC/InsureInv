@@ -20,7 +20,7 @@ info:
   status: "<dark_gray>▪ <white>Status: {status}"
   total-purchases: "<dark_gray>▪ <white>Total Purchased: <color:#9ce8ff>{total_charges}</color>"
   usage-count: "<dark_gray>▪ <white>Times Protected: <color:#9ce8ff>{usage_count}</color>"
-  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 
 admin:
   set-success: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Set charges for <color:#9ce8ff>{player}</color> to <color:#9ce8ff>{amount}</color>."
@@ -52,7 +52,7 @@ usage:
   setmax: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv setmax <amount></color></gradient>"
 
 help:
-  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInv Help ({page}/{total}) ━━━━━━━━━━━━</gradient>"
+  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInvPlugin Help ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <amount></color> <dark_gray>-</dark_gray> <white>Buy inventory protection charges</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [player]</color> <dark_gray>-</dark_gray> <white>Toggle inventory protection</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [player]</color> <dark_gray>-</dark_gray> <white>View charges and protection status</white>"

@@ -20,7 +20,7 @@ info:
   status: "<dark_gray>▪ <white>ᴛʀạɴɢ ᴛʜáɪ: {status}"
   total-purchases: "<dark_gray>▪ <white>ᴛổɴɢ đã ᴍᴜᴀ: <color:#9ce8ff>{total_charges}</color>"
   usage-count: "<dark_gray>▪ <white>số ʟầɴ đượᴄ ʙảᴏ ᴠệ: <color:#9ce8ff>{usage_count}</color>"
-  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 
 admin:
   set-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đặᴛ số ʟầɴ ᴄủᴀ <color:#9ce8ff>{player}</color> ᴛʜàɴʜ <color:#9ce8ff>{amount}</color>."
@@ -61,7 +61,7 @@ help:
   setmax: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ số ʟầɴ ᴛốɪ đᴀ (ᴀᴅᴍɪɴ)</white>"
   reload: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʀᴇʟᴏᴀᴅ</color> <dark_gray>-</dark_gray> <white>ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ (ᴀᴅᴍɪɴ)</white>"
   help: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʜᴇʟᴘ [ᴛʀᴀɴɢ]</color> <dark_gray>-</dark_gray> <white>ʜɪểɴ ᴛʜị ᴛʜôɴɢ ᴛɪɴ ᴛʀợ ɢɪúᴘ</white>"
-  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 
 status:
   enabled: "<color:#99ff94>ʙậᴛ</color>"
