@@ -1,10 +1,10 @@
 name: '${name}'
 version: '${version}-${gitCommit}'
-main: dev.hytical.InsureInv
+main: dev.hytical.insureinv.InsureInvPlugin
 api-version: '1.21'
 folia-supported: true
 authors: [ Hytical ]
-website: https://guns.lol/Hytical
+website: https://qhuyy.tech/
 description: Inventory protection plugin with economy integration
 
 softdepend:
@@ -18,7 +18,7 @@ libraries:
 
 commands:
   insureinv:
-    description: Main InsureInv command
+    description: Main InsureInvPlugin command
     usage: /<command> <buy|toggle|info|set|setprice|setmax|reload|help> [args]
     aliases:
       - inv
@@ -26,10 +26,10 @@ commands:
 
 permissions:
   insureinv.use:
-    description: Allows using basic InsureInv commands
+    description: Allows using basic InsureInvPlugin commands
     default: true
   insureinv.admin:
-    description: Allows using administrative InsureInv commands
+    description: Allows using administrative InsureInvPlugin commands
     default: op
     children:
       hyticinv.use: true
