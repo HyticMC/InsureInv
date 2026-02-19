@@ -1,5 +1,6 @@
-package dev.hytical.economy
+package dev.hytical.economy.impl
 
+import dev.hytical.economy.EconomyProvider
 import org.black_ixx.playerpoints.PlayerPoints
 import org.black_ixx.playerpoints.PlayerPointsAPI
 import org.bukkit.Bukkit

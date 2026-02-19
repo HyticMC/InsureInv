@@ -1,6 +1,9 @@
 package dev.hytical.economy
 
 import dev.hytical.InsureInv
+import dev.hytical.economy.impl.NoneEconomyProvider
+import dev.hytical.economy.impl.PlayerPointsEconomy
+import dev.hytical.economy.impl.VaultEconomy
 import java.util.logging.Logger
 
 class EconomyRegistry(

@@ -1,5 +1,6 @@
-package dev.hytical.economy
+package dev.hytical.economy.impl
 
+import dev.hytical.economy.EconomyProvider
 import org.bukkit.OfflinePlayer
 
 data object NoneEconomyProvider : EconomyProvider {
