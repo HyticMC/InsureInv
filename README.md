@@ -72,4 +72,4 @@ metrics:
 
 ## License
 
-Plugin được phân phối theo giấy phép [GNU General Public License v3.0](LICENSE).
+Plugin được phân phối theo giấy phép [MIT](LICENSE).
