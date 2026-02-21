@@ -32,4 +32,4 @@ permissions:
     description: Allows using administrative InsureInvPlugin commands
     default: op
     children:
-      hyticinv.use: true
+      insureinv.use: true

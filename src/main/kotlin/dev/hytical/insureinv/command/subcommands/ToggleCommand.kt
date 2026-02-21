@@ -20,7 +20,7 @@ class ToggleCommand : SubCommand {
         val targetName = context.arg(1)
 
         if (targetName != null) {
-            if (!sender.hasPermission("hyticinv.admin")) {
+            if (!sender.hasPermission("insureinv.admin")) {
                 messageManager.sendMessage(sender, "no-permission")
                 return
             }
@@ -59,7 +59,7 @@ class ToggleCommand : SubCommand {
                 return
             }
 
-            if (!sender.hasPermission("hyticinv.use")) {
+            if (!sender.hasPermission("insureinv.use")) {
                 messageManager.sendMessage(sender, "no-permission")
                 return
             }
@@ -79,7 +79,7 @@ class ToggleCommand : SubCommand {
     override fun tabComplete(sender: CommandSender, args: Array<String>): List<String> {
         return when (args.size) {
             2 -> {
-                if (sender.hasPermission("hyticinv.admin")) {
+                if (sender.hasPermission("insureinv.admin")) {
                     Bukkit.getOnlinePlayers()
                         .map { it.name }
                         .filter { it.lowercase().startsWith(args[1].lowercase()) }

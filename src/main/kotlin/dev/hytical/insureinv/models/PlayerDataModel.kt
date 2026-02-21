@@ -12,6 +12,7 @@ data class PlayerDataModel(
 ) {
     fun hasCharges(): Boolean = charges > 0
 
+    @Synchronized
     fun consumeCharge(): Boolean {
         return if (hasCharges()) {
             charges--
@@ -22,11 +23,13 @@ data class PlayerDataModel(
         }
     }
 
+    @Synchronized
     fun addCharges(amount: Int) {
         charges += amount
         totalChargesPurchased += amount
     }
 
+    @Synchronized
     fun updateCharges(amount: Int) {
         charges = amount
     }

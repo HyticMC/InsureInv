@@ -24,7 +24,7 @@ class InfoCommand : SubCommand {
 
         val targetArg = context.arg(1)
         if (targetArg != null) {
-            if (!sender.hasPermission("hyticinv.admin")) {
+            if (!sender.hasPermission("insureinv.admin")) {
                 messageManager.sendMessage(sender, "no-permission")
                 return
             }
@@ -44,7 +44,7 @@ class InfoCommand : SubCommand {
                 return
             }
 
-            if (!sender.hasPermission("hyticinv.use")) {
+            if (!sender.hasPermission("insureinv.use")) {
                 messageManager.sendMessage(sender, "no-permission")
                 return
             }
@@ -56,9 +56,9 @@ class InfoCommand : SubCommand {
         val playerData = storageManager.getPlayerData(targetPlayer)
         val maxCharges = configManager.getMaxCharges()
 
-        val statusKey = if (playerData.protectionEnabled) "status-enabled" else "status-disabled"
+        val resolveUuid = (sender as? Player)?.uniqueId ?: targetPlayer.uniqueId
         val statusMessage = PluginLanguage.raw(
-            targetPlayer.uniqueId,
+            resolveUuid,
             "status.${if (playerData.protectionEnabled) "enabled" else "disabled"}"
         )
 
@@ -89,7 +89,7 @@ class InfoCommand : SubCommand {
     override fun tabComplete(sender: CommandSender, args: Array<String>): List<String> {
         return when (args.size) {
             2 -> {
-                if (sender.hasPermission("hyticinv.admin")) {
+                if (sender.hasPermission("insureinv.admin")) {
                     Bukkit.getOnlinePlayers()
                         .map { it.name }
                         .filter { it.lowercase().startsWith(args[1].lowercase()) }

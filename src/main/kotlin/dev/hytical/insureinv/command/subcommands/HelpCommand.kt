@@ -29,7 +29,7 @@ class HelpCommand(
         helpCommands.add("help-toggle")
         helpCommands.add("help-info")
 
-        if (sender.hasPermission("hyticinv.admin")) {
+        if (sender.hasPermission("insureinv.admin")) {
             helpCommands.add("help-set")
             helpCommands.add("help-setprice")
             helpCommands.add("help-setmax")

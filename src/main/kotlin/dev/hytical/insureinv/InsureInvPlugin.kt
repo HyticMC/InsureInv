@@ -101,7 +101,7 @@ open class InsureInvPlugin : JavaPlugin() {
         registerCommands()
         registerEvents()
 
-        logger.info("InsureInvPlugin v${this.pluginMeta.version} enabled successfully,! Have Fun :D")
+        logger.info("InsureInvPlugin v${this.pluginMeta.version} enabled successfully! Have Fun :D")
         sendStartupLog()
     }
 

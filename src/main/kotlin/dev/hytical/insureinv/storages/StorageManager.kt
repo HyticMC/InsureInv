@@ -18,9 +18,11 @@ class StorageManager(
 ) {
     private var currentBackend: StorageBackend? = null
     private val globalCache = ConcurrentHashMap<UUID, PlayerDataModel>()
-    private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    private var scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     fun initialize(): Boolean {
+        scope.cancel()
+        scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
         val preferredMethod = configManager.getStorageMethod()
         plugin.logger.info("Attempting to initialize storage with method: $preferredMethod")
         val startupTime: Long = System.nanoTime()

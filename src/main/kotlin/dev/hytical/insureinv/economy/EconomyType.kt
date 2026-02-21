@@ -2,7 +2,8 @@ package dev.hytical.insureinv.economy
 
 enum class EconomyType {
     VAULT,
-    PLAYER_POINTS;
+    PLAYER_POINTS,
+    NONE;
 
     companion object {
         fun fromString(value: String?): EconomyType {

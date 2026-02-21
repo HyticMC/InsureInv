@@ -73,10 +73,10 @@ class MetricsManager(
     private fun registerJavaVersionChart(metrics: Metrics) {
         metrics.addCustomChart(
             DrilldownPie("java_information") {
-                val vendor = System.getProperty("java.vendor")!!
-                val version = System.getProperty("java.version")!!
-                val bits = System.getProperty("sun.arch.data.models") ?: "Unknown"
-                val runtime = System.getProperty("java.runtime.name")!!
+                val vendor = System.getProperty("java.vendor") ?: "Unknown"
+                val version = System.getProperty("java.version") ?: "Unknown"
+                val bits = System.getProperty("sun.arch.data.model") ?: "Unknown"
+                val runtime = System.getProperty("java.runtime.name") ?: "Unknown"
 
                 mapOf(
                     "Java Details" to mapOf(
