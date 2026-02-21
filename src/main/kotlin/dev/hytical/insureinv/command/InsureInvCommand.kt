@@ -33,7 +33,7 @@ class InsureInvCommand(
             put("reload", ReloadCommand())
 
             put("setlang", SetLangCommand(plugin.i18nManager))
-            put("help", HelpCommand { subcommands })
+            put("help", HelpCommand())
             put("version", VersionCommand(plugin))
         }
     }

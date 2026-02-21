@@ -5,16 +5,13 @@ import dev.hytical.insureinv.command.SubCommand
 import dev.hytical.insureinv.utils.PlaceholderUtil
 import org.bukkit.command.CommandSender
 
-class HelpCommand(
-    private val getSubcommands: () -> Map<String, SubCommand>
-) : SubCommand {
+class HelpCommand : SubCommand {
     override val name = "help"
     override val permission: String? = null
     override val requiresPlayer = false
 
     override fun execute(context: CommandContext) {
         val sender = context.sender
-        val messageManager = context.messageManager
 
         val page = context.argInt(1) ?: 1
         sendHelp(sender, page, context)

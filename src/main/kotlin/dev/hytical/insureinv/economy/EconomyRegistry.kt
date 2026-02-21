@@ -7,7 +7,7 @@ import dev.hytical.insureinv.economy.providers.VaultProvider
 import java.util.logging.Logger
 
 class EconomyRegistry(
-    private val plugin: InsureInvPlugin
+    plugin: InsureInvPlugin
 ) {
     private val logger: Logger = plugin.logger
     private val config = plugin.configManager

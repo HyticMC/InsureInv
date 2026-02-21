@@ -2,9 +2,13 @@ package dev.hytical.insureinv.command.subcommands
 
 import dev.hytical.insureinv.command.CommandContext
 import dev.hytical.insureinv.command.SubCommand
+import dev.hytical.insureinv.i18n.MessageManager
+import dev.hytical.insureinv.managers.ConfigManager
+import dev.hytical.insureinv.storages.StorageManager
 import dev.hytical.insureinv.utils.PlaceholderUtil
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 
 class ToggleCommand : SubCommand {
     override val name = "toggle"
@@ -33,15 +37,7 @@ class ToggleCommand : SubCommand {
                 return
             }
 
-            val playerData = storageManager.getPlayerData(targetPlayer)
-            playerData.protectionEnabled = !playerData.protectionEnabled
-            storageManager.savePlayerData(playerData)
-
-            val messageKey = if (playerData.protectionEnabled) "toggle-on" else "toggle-off"
-            messageManager.sendMessage(
-                targetPlayer, messageKey,
-                PlaceholderUtil.charges(playerData.charges, configManager.getMaxCharges())
-            )
+            val playerData = toggleAndNotify(targetPlayer, storageManager, configManager, messageManager)
 
             if (sender != targetPlayer) {
                 messageManager.sendMessage(
@@ -64,16 +60,26 @@ class ToggleCommand : SubCommand {
                 return
             }
 
-            val playerData = storageManager.getPlayerData(player)
-            playerData.protectionEnabled = !playerData.protectionEnabled
-            storageManager.savePlayerData(playerData)
-
-            val messageKey = if (playerData.protectionEnabled) "toggle-on" else "toggle-off"
-            messageManager.sendMessage(
-                player, messageKey,
-                PlaceholderUtil.charges(playerData.charges, configManager.getMaxCharges())
-            )
+            toggleAndNotify(player, storageManager, configManager, messageManager)
         }
+    }
+
+    private fun toggleAndNotify(
+        player: Player,
+        storageManager: StorageManager,
+        configManager: ConfigManager,
+        messageManager: MessageManager
+    ): dev.hytical.insureinv.models.PlayerDataModel {
+        val playerData = storageManager.getPlayerData(player)
+        playerData.protectionEnabled = !playerData.protectionEnabled
+        storageManager.savePlayerData(playerData)
+
+        val messageKey = if (playerData.protectionEnabled) "toggle-on" else "toggle-off"
+        messageManager.sendMessage(
+            player, messageKey,
+            PlaceholderUtil.charges(playerData.charges, configManager.getMaxCharges())
+        )
+        return playerData
     }
 
     override fun tabComplete(sender: CommandSender, args: Array<String>): List<String> {

@@ -32,9 +32,9 @@ class PluginBuildInfo(private val plugin: InsureInvPlugin) {
             GitInfo(
                 commitIdAbbrev = props.getProperty("git.commit.id.abbrev", "Unknown"),
                 commitMessage = props.getProperty("git.commit.message.short", "Unknown"),
-                commitTime = props.getProperty("git.commit.time")?.let { format(it) } ?: "Unknown",
+                commitTime = props.getProperty("git.commit.time")?.let { raw -> format(raw) } ?: "Unknown",
                 branch = props.getProperty("git.branch", "Unknown"),
-                buildTime = props.getProperty("git.build.time")?.let { format(it) } ?: "Unknown",
+                buildTime = props.getProperty("git.build.time")?.let { raw -> format(raw) } ?: "Unknown",
                 buildVersion = plugin.pluginMeta.version,
                 isDirty = props.getProperty("git.dirty", "false")
                     .toBooleanStrictOrNull() ?: false
