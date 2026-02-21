@@ -1,0 +1,67 @@
+buy:
+  success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Acheté <color:#99ff94>{amount}</color> charge(s) pour <color:#99ff94>${price}</color> ! Il vous reste <color:#99ff94>{charges}</color>/{max}."
+  insufficient-funds: "<gradient:#ff7817:#ffc46b>Fonds insuffisants ! Vous avez besoin de <color:#ffc885>${price}</color> mais n'avez que <color:#ffc885>${balance}</color>.</gradient>"
+  max-exceeded: "<gradient:#ff7817:#ffc46b>L'achat dépasserait le maximum ! Vous ne pouvez acheter que <color:#ffc885>{amount}</color> de plus.</gradient>"
+  invalid-amount: "<gradient:#ff7817:#ffc46b>Montant invalide ! Veuillez spécifier un nombre positif.</gradient>"
+
+toggle:
+  "on": "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Protection d'inventaire <color:#99ff94>activée</color> ! Il vous reste <color:#99ff94>{charges}</color> charge(s)."
+  "off": "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Protection d'inventaire <color:#ff7817>désactivée</color> ! Votre inventaire ne sera pas protégé à la mort."
+
+protection:
+  triggered: "<gradient:#00ff00:#00aa00>Votre inventaire a été protégé ! <color:#99ff94>{charges}</color> charge(s) restante(s).</gradient>"
+  no-charges: "<gradient:#ff7817:#ffc46b>Vous êtes mort sans charges de protection ! Votre inventaire n'a pas été protégé.</gradient>"
+  disabled: "<gradient:#ff7817:#ffc46b>La protection est désactivée. Utilisez <color:#9ce8ff>/insureinv toggle</color> pour l'activer.</gradient>"
+
+info:
+  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━ Info Joueur ━━━━━━━━━━</gradient>"
+  player: "<dark_gray>▪ <white>Joueur : <color:#9ce8ff>{player}</color>"
+  charges: "<dark_gray>▪ <white>Charges : <color:#9ce8ff>{charges}</color>/<color:#9ce8ff>{max}</color>"
+  status: "<dark_gray>▪ <white>Statut : {status}"
+  total-purchases: "<dark_gray>▪ <white>Total acheté : <color:#9ce8ff>{total_charges}</color>"
+  usage-count: "<dark_gray>▪ <white>Fois protégé : <color:#9ce8ff>{usage_count}</color>"
+  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+
+admin:
+  set-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Charges de <color:#9ce8ff>{player}</color> définies à <color:#9ce8ff>{amount}</color>."
+  toggle-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Protection basculée à <color:#9ce8ff>{status}</color> pour <color:#9ce8ff>{player}</color>."
+  price-updated: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Prix par charge mis à jour à <color:#9ce8ff>${price}</color>."
+  max-updated: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Charges maximales par joueur mises à jour à <color:#9ce8ff>{max}</color>."
+
+system:
+  reload-complete: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Configuration rechargée !"
+  reload-storage-changed: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Méthode de stockage changée à <color:#9ce8ff>{method}</color>. Les données ont été migrées."
+  lang-test: "<color:#99ff94>✔</color> <white>Test de langue <dark_gray>▪ <white>Votre langue : <color:#9ce8ff>{lang}</color>. Ce message est localisé."
+  lang-changed: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Langue changée à <color:#9ce8ff>{lang}</color>."
+  lang-current: "<color:#99ff94>✔</color> <white>Langue <dark_gray>▪ <white>Actuelle : <color:#9ce8ff>{lang}</color>. Disponibles : <color:#9ce8ff>{available}</color>."
+  lang-invalid: "<gradient:#ff7817:#ffc46b>Langue inconnue <color:#ffc885>{lang}</color> ! Disponibles : <color:#ffc885>{available}</color>.</gradient>"
+
+error:
+  no-permission: "<gradient:#ff7817:#ffc46b>Vous n'avez pas la permission d'utiliser cette commande !</gradient>"
+  player-not-found: "<gradient:#ff7817:#ffc46b>Joueur <color:#ffc885>{player}</color> introuvable ou jamais connecté.</gradient>"
+  invalid-amount: "<gradient:#ff7817:#ffc46b>Montant invalide ! Veuillez spécifier un nombre valide.</gradient>"
+  player-only: "<gradient:#ff7817:#ffc46b>Cette commande ne peut être utilisée que par des joueurs !</gradient>"
+  economy-unavailable: "<gradient:#ff7817:#ffc46b>Système économique indisponible !</gradient>"
+  transaction-failed: "<gradient:#ff7817:#ffc46b>Transaction échouée ! Veuillez réessayer.</gradient>"
+
+usage:
+  buy: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv buy <montant></color></gradient>"
+  set: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv set <joueur> <montant></color></gradient>"
+  setprice: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv setprice <montant></color></gradient>"
+  setmax: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv setmax <montant></color></gradient>"
+
+help:
+  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ Aide InsureInvPlugin ({page}/{total}) ━━━━━━━━━━━━</gradient>"
+  buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <montant></color> <dark_gray>-</dark_gray> <white>Acheter des charges de protection</white>"
+  toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [joueur]</color> <dark_gray>-</dark_gray> <white>Basculer la protection d'inventaire</white>"
+  info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [joueur]</color> <dark_gray>-</dark_gray> <white>Voir les charges et le statut</white>"
+  set: "<dark_gray>▪ <color:#9ce8ff>/insureinv set <joueur> <montant></color> <dark_gray>-</dark_gray> <white>Définir les charges (Admin)</white>"
+  setprice: "<dark_gray>▪ <color:#9ce8ff>/insureinv setprice <montant></color> <dark_gray>-</dark_gray> <white>Modifier le prix par charge (Admin)</white>"
+  setmax: "<dark_gray>▪ <color:#9ce8ff>/insureinv setmax <montant></color> <dark_gray>-</dark_gray> <white>Modifier le max de charges (Admin)</white>"
+  reload: "<dark_gray>▪ <color:#9ce8ff>/insureinv reload</color> <dark_gray>-</dark_gray> <white>Recharger la configuration (Admin)</white>"
+  help: "<dark_gray>▪ <color:#9ce8ff>/insureinv help [page]</color> <dark_gray>-</dark_gray> <white>Afficher l'aide</white>"
+  footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
+
+status:
+  enabled: "<color:#99ff94>Activé</color>"
+  disabled: "<color:#ff7817>Désactivé</color>"
