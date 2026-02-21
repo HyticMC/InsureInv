@@ -31,7 +31,6 @@ admin:
 system:
   reload-complete: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Configuration reloaded!"
   reload-storage-changed: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Storage method changed to <color:#9ce8ff>{method}</color>. Data has been migrated."
-  lang-reload-complete: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Language files reloaded!"
   lang-test: "<color:#99ff94>✔</color> <white>Language test <dark_gray>▪ <white>Your language: <color:#9ce8ff>{lang}</color>. This message is localized."
   lang-changed: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Language changed to <color:#9ce8ff>{lang}</color>."
   lang-current: "<color:#99ff94>✔</color> <white>Language <dark_gray>▪ <white>Current: <color:#9ce8ff>{lang}</color>. Available: <color:#9ce8ff>{available}</color>."

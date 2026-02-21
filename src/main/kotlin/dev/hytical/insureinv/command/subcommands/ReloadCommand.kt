@@ -19,6 +19,7 @@ class ReloadCommand : SubCommand {
         val oldBackend = storageManager.getCurrentBackendName()
         configManager.reload()
         storageManager.reload()
+        context.plugin.reloadI18n()
 
         val newBackend = storageManager.getCurrentBackendName()
 

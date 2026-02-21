@@ -1,19 +1,20 @@
 package dev.hytical.insureinv.command.subcommands
 
-import dev.hytical.insureinv.InsureInvPlugin
 import dev.hytical.insureinv.command.CommandContext
 import dev.hytical.insureinv.command.SubCommand
+import dev.hytical.insureinv.i18n.I18nManager
 import dev.hytical.insureinv.i18n.PluginLanguage
 import org.bukkit.command.CommandSender
 
-class SetLangCommand : SubCommand {
+class SetLangCommand(
+    private val i18nManager: I18nManager
+) : SubCommand {
     override val name = "setlang"
     override val permission: String? = null
     override val requiresPlayer = true
 
     override fun execute(context: CommandContext) {
         val player = context.playerOrThrow
-        val i18nManager = context.plugin.i18nManager
         val langCode = context.arg(1)
 
         if (langCode == null) {
@@ -50,11 +51,9 @@ class SetLangCommand : SubCommand {
     override fun tabComplete(sender: CommandSender, args: Array<String>): List<String> {
         if (args.size != 2) return emptyList()
 
-        val plugin = (sender.server.pluginManager.getPlugin("InsureInvPlugin") as? InsureInvPlugin)
-            ?: return emptyList()
-
-        return plugin.i18nManager.registry.languages
+        return i18nManager.registry.languages
             .filter { it.lowercase().startsWith(args[1].lowercase()) }
             .sorted()
     }
 }
+

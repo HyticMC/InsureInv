@@ -31,7 +31,6 @@ admin:
 system:
   reload-complete: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ!"
   reload-storage-changed: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ᴘʜươɴɢ ᴛʜứᴄ ʟưᴜ ᴛʀữ đổɪ ᴛʜàɴʜ <color:#9ce8ff>{method}</color>. ᴅữ ʟɪệᴜ đã đượᴄ ᴅɪ ᴄʜᴜʏểɴ."
-  lang-reload-complete: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴛảɪ ʟạɪ ꜰɪʟᴇ ɴɢôɴ ɴɢữ!"
   lang-test: "<color:#99ff94>✔</color> <white>Kiểm tra ngôn ngữ <dark_gray>▪ <white>Ngôn ngữ của bạn: <color:#9ce8ff>{lang}</color>. Tin nhắn này đã được bản địa hóa."
   lang-changed: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã đổɪ ɴɢôɴ ɴɢữ ᴛʜàɴʜ <color:#9ce8ff>{lang}</color>."
   lang-current: "<color:#99ff94>✔</color> <white>ɴɢôɴ ɴɢữ <dark_gray>▪ <white>ʜɪệɴ ᴛạɪ: <color:#9ce8ff>{lang}</color>. ᴋʜả ᴅụɴɢ: <color:#9ce8ff>{available}</color>."

@@ -31,9 +31,8 @@ class InsureInvCommand(
             put("setprice", SetPriceCommand())
             put("setmax", SetMaxCommand())
             put("reload", ReloadCommand())
-            put("langreload", LangReloadCommand())
 
-            put("setlang", SetLangCommand())
+            put("setlang", SetLangCommand(plugin.i18nManager))
             put("help", HelpCommand { subcommands })
             put("version", VersionCommand(plugin))
         }

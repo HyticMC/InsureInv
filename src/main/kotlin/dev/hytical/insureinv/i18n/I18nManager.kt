@@ -7,49 +7,58 @@ import dev.hytical.i18n.LangStorage
 import dev.hytical.i18n.bukkit.PdcLangStorage
 import dev.hytical.insureinv.InsureInvPlugin
 import java.io.InputStream
+import java.util.concurrent.atomic.AtomicReference
 import java.util.logging.Logger
 
 class I18nManager(
     private val plugin: InsureInvPlugin,
     private val defaultLanguage: String = "en_US"
 ) {
-    private lateinit var bootstrap: I18nBootstrap
-    private lateinit var _storage: LangStorage
+    private val bootstrapRef = AtomicReference<I18nBootstrap>()
+    @Volatile private var _storage: LangStorage? = null
     private val logger: Logger = plugin.logger
 
     val registry: LangRegistry
-        get() = bootstrap.registry()
+        get() = (bootstrapRef.get()
+            ?: throw IllegalStateException("I18nManager not initialized: call initialize() before accessing registry"))
+            .registry()
 
     val service: LangService
-        get() = bootstrap.service()
+        get() = (bootstrapRef.get()
+            ?: throw IllegalStateException("I18nManager not initialized: call initialize() before accessing service"))
+            .service()
 
     val storage: LangStorage
         get() = _storage
+            ?: throw IllegalStateException("I18nManager not initialized: call initialize() before accessing storage")
 
     fun initialize() {
-        build()
+        val (newBootstrap, newStorage) = buildNew()
+        _storage = newStorage
+        bootstrapRef.set(newBootstrap)
         logger.info("i18n engine initialized with ${registry.languages.size} language(s): ${registry.languages}")
     }
 
     fun rebuild() {
-        service.invalidateAll()
-        build()
+        val oldBootstrap = bootstrapRef.get()
+        val (newBootstrap, newStorage) = buildNew()
+        _storage = newStorage
+        bootstrapRef.set(newBootstrap)
+        oldBootstrap?.service()?.invalidateAll()
         logger.info("i18n engine rebuilt with ${registry.languages.size} language(s)")
     }
 
     fun shutdown() {
-        if (::bootstrap.isInitialized) {
-            service.invalidateAll()
-        }
+        bootstrapRef.get()?.service()?.invalidateAll()
     }
 
-    private fun build() {
-        _storage = PdcLangStorage(plugin)
+    private fun buildNew(): Pair<I18nBootstrap, LangStorage> {
+        val newStorage = PdcLangStorage(plugin)
 
         val builder = I18nBootstrap.builder()
             .defaultLanguage(defaultLanguage)
             .defaultFile { loadResource("lang/default.yml") }
-            .storage(_storage)
+            .storage(newStorage)
 
         discoverLocales().forEach { (langCode, resourcePath) ->
             if (langCode != defaultLanguage || resourcePath != "lang/default.yml") {
@@ -57,7 +66,7 @@ class I18nManager(
             }
         }
 
-        bootstrap = builder.build()
+        return builder.build() to newStorage
     }
 
     private fun discoverLocales(): List<Pair<String, String>> {
